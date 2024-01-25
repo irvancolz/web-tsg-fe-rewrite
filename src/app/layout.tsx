@@ -33,7 +33,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <body>
         <main>
           <Topnav />
-          {children}
+          <div id="main_container">{children}</div>
         </main>
       </body>
     </html>

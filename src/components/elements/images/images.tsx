@@ -21,11 +21,6 @@ export function Images({
       <Image
         alt="img"
         fill={fill ? fill : true}
-        sizes={
-          sizes
-            ? sizes
-            : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        }
         priority={priority ? priority : false}
         {...rest}
       />

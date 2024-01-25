@@ -9,6 +9,9 @@
 
   --col-blue-400: #50b8e7;
 
+  --col-black: #000205;
+  --col-white: #fff;
+
   --col-azure-50: #eef8ff;
   --col-azure-100: #daefff;
   --col-azure-200: #bde3ff;
@@ -70,9 +73,8 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    // background-color: var(--col-azure-900);
+  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--col-black);
     max-width: 100vw;
     overflow-x: hidden;
 }
@@ -115,6 +117,14 @@ u,li{
 a{
   text-decoration: none;
   color: inherit;
+}
+
+#main_container{
+
+  @media (min-width : 768px) {
+    translate: 0 -4rem;
+    padding: 5rem;
+  }
 }
 
 @media (min-width: 768px) {

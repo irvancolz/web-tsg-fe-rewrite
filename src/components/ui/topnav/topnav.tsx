@@ -72,7 +72,7 @@ const links: NavigationProps[] = [
   },
 ];
 export function Topnav() {
-  const [scroll, setScroll] = useState<number>(scrollY);
+  const [scroll, setScroll] = useState<number>(0);
   useEffect(() => {
     const func = () => {
       setScroll(() => scrollY);
@@ -86,7 +86,7 @@ export function Topnav() {
     <header
       style={
         {
-          "--bg-col": scroll > 0 ? "var(--col-azure-800)" : "transparent",
+          "--bg-col": scroll > 0 ? "var(--col-blue-800)" : "transparent",
         } as CSSProperties
       }
       className={styles.container}
