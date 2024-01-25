@@ -1,0 +1,25 @@
+.tsg_logo{
+    height: 6rem;
+    aspect-ratio: 487/120;
+}
+
+.odoo_logo{
+    height: 6rem;
+    aspect-ratio: 177/82;
+}
+
+.container{
+    background-color: transparent;
+    padding: 2rem 5rem;
+
+    @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.nav{
+    display: flex;
+    gap: 1rem;
+}

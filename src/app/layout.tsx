@@ -6,6 +6,7 @@ import gsap from "gsap";
 import "./globals.scss";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
+import { Topnav } from "@/components";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +32,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <main className={styles.main}>{children}</main>
+        <main>
+          <Topnav />
+          {children}
+        </main>
       </body>
     </html>
   );
