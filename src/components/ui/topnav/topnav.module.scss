@@ -1,5 +1,5 @@
 .tsg_logo{
-    height: 4rem;
+    height: 3rem;
     aspect-ratio: 487/120;
     &_sm{
         aspect-ratio: 1;
@@ -16,7 +16,7 @@
 }
 
 .odoo_logo{
-    height: 4rem;
+    height: 3rem;
     aspect-ratio: 177/82;
     display: none;
 
@@ -26,10 +26,14 @@
 }
 
 .container{
-    background-color: transparent;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-col);
     padding: 1rem;
+    transition: background-color .3s ease-in-out;
+
     @media (min-width: 768px) {
-        padding: 2rem 5rem;
+        padding: .5rem 5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -42,14 +46,13 @@
     @media (min-width :768px) {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: .5rem;
     }
 }
 
 .icon{
     aspect-ratio: 1;
     width: 2rem;
-    fill: red;
 }
 
 .logo_container{

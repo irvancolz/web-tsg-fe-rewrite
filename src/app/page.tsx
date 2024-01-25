@@ -7,14 +7,11 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <HomeHero />
-      <Button>Hello</Button>
-
-      <Button leftIcon={<FaChevronDown />} variant="outlined">
-        Hello
-      </Button>
-      <Button rightIcon={<FaChevronDown />} variant="transparent">
-        Hello
-      </Button>
+      <div
+        style={{
+          height: "100vh",
+        }}
+      ></div>
     </main>
   );
 }

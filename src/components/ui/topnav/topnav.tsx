@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { CSSProperties, useEffect, useState } from "react";
 import styles from "./topnav.module.scss";
 import {
   Button,
@@ -14,6 +15,7 @@ import itRoadmapIcon from "../../../../public/images/svg/itroadmap.svg";
 import infoTriangleIcon from "../../../../public/images/svg/Info-triangle.svg";
 import bookIcon from "../../../../public/images/svg/book.svg";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Link from "next/link";
 
 const links: NavigationProps[] = [
   {
@@ -70,29 +72,49 @@ const links: NavigationProps[] = [
   },
 ];
 export function Topnav() {
+  const [scroll, setScroll] = useState<number>(scrollY);
+  useEffect(() => {
+    const func = () => {
+      setScroll(() => scrollY);
+    };
+    addEventListener("scroll", func);
+
+    return () => removeEventListener("scroll", func);
+  }, []);
+
   return (
-    <header className={styles.container}>
+    <header
+      style={
+        {
+          "--bg-col": scroll > 0 ? "var(--col-azure-800)" : "transparent",
+        } as CSSProperties
+      }
+      className={styles.container}
+    >
       <div className={styles.logo_container}>
-        <Images
-          className={styles.tsg_logo}
-          alt="tsg logo"
-          src={getStaticAssetsPath("/images/png", "logo-tsg-light.png")}
-        />
+        <Link href={"/"}>
+          <Images
+            className={styles.tsg_logo}
+            alt="tsg logo"
+            src={getStaticAssetsPath("/images/png", "logo-tsg-light.png")}
+          />
+        </Link>
         <Button variant="unstyled" className={styles.hamburger}>
           <GiHamburgerMenu style={{ fill: "#fff", fontSize: "2rem" }} />
         </Button>
+        <nav className="nav">
+          {/* desktop topnav */}
+          <ul className={styles.nav}>
+            {links.map((path, i) => {
+              return (
+                <li key={i}>
+                  <TopnavNavigations key={i} {...path} />
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
-      <nav className="nav">
-        <ul className={styles.nav}>
-          {links.map((path, i) => {
-            return (
-              <li key={i}>
-                <TopnavNavigations key={i} {...path} />
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
       <div className="odoo">
         <Images
           alt="odoo logo"

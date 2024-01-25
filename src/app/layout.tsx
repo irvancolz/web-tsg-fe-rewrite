@@ -1,6 +1,5 @@
 "use client";
 import React, { ReactNode } from "react";
-import styles from "./page.module.scss";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import "./globals.scss";

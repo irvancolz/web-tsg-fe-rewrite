@@ -3,14 +3,18 @@
     color: var(--col-grey-250);
     text-transform: capitalize;
     padding: .5rem 1rem;
-   font-size: 1rem;
+    font-size: .8rem;
 
-   &_with_overlay{
-    position: relative;
+    &_with_overlay{
+        position: relative;
 
-    &:hover .overlay, &:focus-within .overlay{
-        display: flex;
-    }
+        &:hover .overlay, &:focus-within .overlay{
+            display: flex;
+        }
+   }
+
+   &:hover{
+    color: var(--col-biru-chat);
    }
 
    &_inner{
@@ -38,7 +42,7 @@
     border-radius: .25rem;
     min-width: 20rem;
     top: calc(100%);
-    animation: fadeIn .3s ease-in-out;
+    animation: fadeIn .2s linear;
     font-weight: 500;
     overflow: hidden;
     padding: .25rem;
