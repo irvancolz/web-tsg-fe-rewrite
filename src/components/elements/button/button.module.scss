@@ -7,14 +7,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: .5rem;
     cursor: pointer;
     border-radius: .25rem;
     font-weight: 500;
     min-width: 7rem;
 
-    &:has(> :last-child:nth-child(1)){
-        padding: .5rem 2rem;
+    &:not([data-variant='unstyled']){
+        &:has(> :last-child:nth-child(1)){
+            padding: .5rem 2rem;
+        }
     }
+
 
     &:focus, :focus-visible {
         outline-color: var(--col-azure-900);
@@ -48,6 +52,11 @@
         }
     }
 
+    &[data-variant='unstyled']{
+        padding: 0;
+        border-radius: .25rem;
+        min-width: fit-content;
+    }
 }
 
 .content{

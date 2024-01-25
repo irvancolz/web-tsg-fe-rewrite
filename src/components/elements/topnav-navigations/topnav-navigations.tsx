@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
+import style from "./topnav-navigations.module.scss";
+import { Button } from "..";
+import { BiChevronDown } from "react-icons/bi";
 
 export type NavigationProps = {
   label: ReactNode;
   path: string;
   children?: NavigationProps[];
+  icon?: React.JSX.Element;
 };
 
 export type TopnavNavigationProps = {
@@ -16,19 +20,35 @@ export function TopnavNavigations({
   path,
   children = [],
 }: NavigationProps) {
-  if (children.length <= 0) return <Link href={path}>{label}</Link>;
+  if (children.length <= 0)
+    return (
+      <Link className={style.link} href={path}>
+        {label}
+      </Link>
+    );
   return (
-    <>
-      <button type="button">{label}</button>
-      {/* <ul>
+    <div className={style.link_with_overlay}>
+      <Button
+        rightIcon={<BiChevronDown />}
+        className={style.link}
+        variant="unstyled"
+      >
+        {label}
+      </Button>
+      <ul className={style.overlay}>
         {children.map((links, i) => {
           return (
-            <Link key={i} href={links.path}>
+            <Link
+              className={style.link_inner}
+              key={i}
+              href={`${path}${links.path}`}
+            >
+              {links.icon}
               {links.label}
             </Link>
           );
         })}
-      </ul> */}
-    </>
+      </ul>
+    </div>
   );
 }

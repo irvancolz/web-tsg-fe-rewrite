@@ -2,7 +2,7 @@ import React, { CSSProperties, ComponentProps } from "react";
 import styles from "./button.module.scss";
 
 export type ButtonProps = {
-  variant?: "solid" | "outlined" | "transparent";
+  variant?: "solid" | "outlined" | "transparent" | "unstyled";
   leftIcon?: React.JSX.Element;
   rightIcon?: React.JSX.Element;
   col?: string;
@@ -10,7 +10,7 @@ export type ButtonProps = {
 
 export function Button({
   variant = "solid",
-  className,
+  className = "",
   leftIcon,
   rightIcon,
   col = "var(--col-azure-800)",
@@ -20,7 +20,7 @@ export function Button({
   return (
     <button
       style={{ "--bg-col": col } as CSSProperties}
-      className={`${styles.btn}`}
+      className={`${styles.btn} ${className}`}
       data-variant={variant}
       {...rest}
     >

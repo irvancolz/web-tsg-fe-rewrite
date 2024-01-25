@@ -1,7 +1,19 @@
 import React from "react";
 import styles from "./topnav.module.scss";
-import { Images, NavigationProps, TopnavNavigations } from "@/components";
+import {
+  Button,
+  Images,
+  NavigationProps,
+  TopnavNavigations,
+} from "@/components";
 import { getStaticAssetsPath } from "@/consts";
+import tailorMadeIcon from "../../../../public/images/svg/tailor-made.svg";
+import piechartIcon from "../../../../public/images/svg/pie-chart.svg";
+import manpowerIcon from "../../../../public/images/svg/manpower.svg";
+import itRoadmapIcon from "../../../../public/images/svg/itroadmap.svg";
+import infoTriangleIcon from "../../../../public/images/svg/Info-triangle.svg";
+import bookIcon from "../../../../public/images/svg/book.svg";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const links: NavigationProps[] = [
   {
@@ -13,28 +25,38 @@ const links: NavigationProps[] = [
     path: "/our-services",
     children: [
       {
-        label: "contact",
-        path: "/contact",
+        label: "tailor-made application development",
+        path: "/tailor-made-application-development",
+        icon: (
+          <Images src={tailorMadeIcon} alt="icon" className={styles.icon} />
+        ),
       },
       {
-        label: "blog / news / events",
-        path: "/blogs",
+        label: "technology managed services",
+        path: "/technology-managed-services",
+        icon: <Images src={piechartIcon} alt="icon" className={styles.icon} />,
       },
       {
-        label: "contact",
-        path: "/contact",
+        label: " IT manpower supply",
+        path: "/it-manpower-supply",
+        icon: <Images src={manpowerIcon} alt="icon" className={styles.icon} />,
       },
       {
-        label: "blog / news / events",
-        path: "/blogs",
+        label: "IT roadmap and strategic planning",
+        path: "/it-roadmap-and-strategic-planning",
+        icon: <Images src={itRoadmapIcon} alt="icon" className={styles.icon} />,
       },
       {
-        label: "contact",
-        path: "/contact",
+        label: "software quality assurance and security testing",
+        path: "/software-qa-and-security-testing",
+        icon: (
+          <Images src={infoTriangleIcon} alt="icon" className={styles.icon} />
+        ),
       },
       {
-        label: "blog / news / events",
-        path: "/blogs",
+        label: "agile and scrum training and consulting",
+        path: "/agile-and-scrum-training-consulting",
+        icon: <Images src={bookIcon} alt="icon" className={styles.icon} />,
       },
     ],
   },
@@ -50,12 +72,15 @@ const links: NavigationProps[] = [
 export function Topnav() {
   return (
     <header className={styles.container}>
-      <div className="logo">
+      <div className={styles.logo_container}>
         <Images
           className={styles.tsg_logo}
           alt="tsg logo"
           src={getStaticAssetsPath("/images/png", "logo-tsg-light.png")}
         />
+        <Button variant="unstyled" className={styles.hamburger}>
+          <GiHamburgerMenu style={{ fill: "#fff", fontSize: "2rem" }} />
+        </Button>
       </div>
       <nav className="nav">
         <ul className={styles.nav}>
