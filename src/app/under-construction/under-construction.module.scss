@@ -1,0 +1,67 @@
+.container{
+    height: 90vh;
+    display: grid;
+    place-items: center;
+}
+
+.gear{
+    aspect-ratio: 1;
+    position: absolute;
+    animation: spin 25s linear infinite;
+    z-index: -1;
+    
+    &_big{
+        width: 25rem;
+        top: -50%;
+        right: 50%;        
+
+        @media (min-width:768px) {
+            right: -10rem;
+            top: -9rem;  
+        }
+    }
+
+    &_small{
+        width: 10rem;
+        right: 2rem;
+        top: -5rem;
+        animation-direction: reverse;
+        
+        @media (min-width:768px) {
+            right: 14rem;
+        }
+    }
+}
+
+.content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--col-black);
+    width: 100%;
+    max-width: 90vw;
+    
+    @media (min-width: 768px) {
+        max-width: 40em;
+    }
+}
+
+.title{
+    font-size: 6rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1em;
+}
+
+.desc{
+    text-align: center;
+}
+
+@keyframes spin {
+    100%{
+        rotate: 360deg;
+    }
+}
