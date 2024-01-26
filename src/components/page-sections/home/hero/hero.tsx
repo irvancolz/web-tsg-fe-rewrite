@@ -24,9 +24,7 @@ export function HomeHero() {
           expectations.
         </p>
         <p className={styles.tagline}>Make everything EASY with Tee-Es-Gee</p>
-        <Button variant="outlined" col="var(--col-blue-300)">
-          Get Demo
-        </Button>
+        <Button col="var(--col-blue-300)">Get Demo</Button>
       </div>
 
       <video ref={videoRef} className={styles.video} autoPlay loop muted>

@@ -9,7 +9,7 @@
 
         
     @media (min-width: 768px) {
-        padding: 5rem;
+        padding: 5rem 0;
     }
 
     .video{
@@ -43,24 +43,24 @@
             font-size: 1.5rem;
             font-weight: 500;
             @media (min-width: 768px) {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
         }
         
         .tagline{
             font-size: 1.5rem;
             @media (min-width: 768px) {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
         }
         
         .description{
             font-size: 3rem;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1em;
             
             @media (min-width: 768px) {
-                font-size: 4rem;
+                font-size: 3rem;
             }
         }
     }
