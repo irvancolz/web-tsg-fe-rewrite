@@ -1,0 +1,7 @@
+.container{
+    background-color: var(--col-blue-900);
+    min-height: 90vh;
+    box-shadow: 0 0 0 1000vmax var(--col-blue-900);
+    clip-path: inset(0 -100vmax);
+    padding: 3rem 1rem;
+}

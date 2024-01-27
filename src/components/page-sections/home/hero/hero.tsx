@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components";
+import { Button, Container } from "@/components";
 import React, { useEffect, useRef } from "react";
 import styles from "./hero.module.scss";
 import { getStaticAssetsPath } from "@/consts";
