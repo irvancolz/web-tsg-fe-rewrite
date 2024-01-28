@@ -9,6 +9,29 @@
         aspect-ratio: 1;
         width: 10rem;
         margin-bottom: 2rem;
+        position: relative;
+        transition: filter .2s ease-in-out;
+
+        &:hover{
+            filter: brightness(.5);
+            &::after{
+                display: grid;
+            }
+        }
+
+        &::after{
+            content: "talk to our project director";
+            aspect-ratio: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border-radius: 50%;
+            display: none;
+            place-items: center;
+            text-align: center;
+            font-weight: 600;
+        }
     }
 
     &_name, &_title{
