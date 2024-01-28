@@ -1,12 +1,6 @@
-import React, { CSSProperties, ComponentProps } from "react";
+import React, { CSSProperties } from "react";
 import styles from "./button.module.scss";
-
-export type ButtonProps = {
-  variant?: "solid" | "outlined" | "transparent" | "unstyled";
-  leftIcon?: React.JSX.Element;
-  rightIcon?: React.JSX.Element;
-  col?: string;
-} & ComponentProps<"button">;
+import { ButtonProps } from "./button.types";
 
 export function Button({
   variant = "solid",

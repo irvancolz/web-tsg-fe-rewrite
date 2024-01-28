@@ -1,4 +1,9 @@
-import { HomeBackstory, HomeHero, ProjectDirectorWords } from "@/components";
+import {
+  CompanyStrength,
+  HomeBackstory,
+  HomeHero,
+  ProjectDirectorWords,
+} from "@/components";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -7,6 +12,7 @@ export default function Home() {
       <HomeHero />
       <HomeBackstory />
       <ProjectDirectorWords />
+      <CompanyStrength />
     </main>
   );
 }

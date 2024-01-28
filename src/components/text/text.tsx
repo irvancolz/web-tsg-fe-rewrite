@@ -1,8 +1,6 @@
-import React, { ComponentProps } from "react";
+import React from "react";
 import styles from "./text.module.scss";
-export type TextProps = {
-  variant?: "light" | "dark";
-} & ComponentProps<"p">;
+import { TextProps } from "./text.types";
 
 export function Text({
   variant = "dark",

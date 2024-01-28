@@ -3,17 +3,7 @@ import React, { ReactNode } from "react";
 import style from "./topnav-navigations.module.scss";
 import { Button } from "..";
 import { BiChevronDown } from "react-icons/bi";
-
-export type NavigationProps = {
-  label: ReactNode;
-  path: string;
-  children?: NavigationProps[];
-  icon?: React.JSX.Element;
-};
-
-export type TopnavNavigationProps = {
-  links: NavigationProps;
-};
+import { NavigationProps } from "./topnav-navigations.props";
 
 export function TopnavNavigations({
   label,
