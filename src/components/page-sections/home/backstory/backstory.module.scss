@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-items: space-between;
-    height: 80%;
+    height: max-content;
+    padding:  3rem 0;
     gap: 8rem;
     
     @media (min-width:768px) {
@@ -24,11 +25,6 @@
             .title{
                 font-size: 2rem;
                 line-height: 1.25em;
-                text-wrap: balance;
-                @media (min-width:768px) {
-                    font-size: 3rem;
-                    
-                }
             }
             .desc{
                 color: var(--col-blue-200);

@@ -1,4 +1,4 @@
-import { HomeBackstory, HomeHero } from "@/components";
+import { HomeBackstory, HomeHero, ProjectDirectorWords } from "@/components";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -6,6 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <HomeHero />
       <HomeBackstory />
+      <ProjectDirectorWords />
     </main>
   );
 }
