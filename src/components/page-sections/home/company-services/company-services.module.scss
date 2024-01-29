@@ -1,0 +1,42 @@
+.services{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    @media (min-width:768px) {
+        max-width: 80vw;
+        gap: 8rem;
+    }
+
+    &_content{
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & >* {
+            flex-basis: 50%;
+        }
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            align-items: center;
+            gap: 4rem;
+            &:nth-child(odd){
+                flex-direction: row-reverse;
+            }
+        }
+
+        &_title{
+            font-size: 2rem;
+        }
+        &_desc{
+            color: var(--col-blue-200);
+        }
+    }
+
+    &_img{
+        aspect-ratio: 16/9;
+        width: 100%;
+    }
+}
