@@ -8,12 +8,6 @@ import {
   TopnavNavigations,
 } from "@/components";
 import { getStaticAssetsPath } from "@/consts";
-import tailorMadeIcon from "../../../../public/images/svg/tailor-made.svg";
-import piechartIcon from "../../../../public/images/svg/pie-chart.svg";
-import manpowerIcon from "../../../../public/images/svg/manpower.svg";
-import itRoadmapIcon from "../../../../public/images/svg/itroadmap.svg";
-import infoTriangleIcon from "../../../../public/images/svg/Info-triangle.svg";
-import bookIcon from "../../../../public/images/svg/book.svg";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
 
@@ -25,42 +19,6 @@ const links: NavigationProps[] = [
   {
     label: "services",
     path: "/our-services",
-    children: [
-      {
-        label: "tailor-made application development",
-        path: "/tailor-made-application-development",
-        icon: (
-          <Images src={tailorMadeIcon} alt="icon" className={styles.icon} />
-        ),
-      },
-      {
-        label: "technology managed services",
-        path: "/technology-managed-services",
-        icon: <Images src={piechartIcon} alt="icon" className={styles.icon} />,
-      },
-      {
-        label: " IT manpower supply",
-        path: "/it-manpower-supply",
-        icon: <Images src={manpowerIcon} alt="icon" className={styles.icon} />,
-      },
-      {
-        label: "IT roadmap and strategic planning",
-        path: "/it-roadmap-and-strategic-planning",
-        icon: <Images src={itRoadmapIcon} alt="icon" className={styles.icon} />,
-      },
-      {
-        label: "software quality assurance and security testing",
-        path: "/software-qa-and-security-testing",
-        icon: (
-          <Images src={infoTriangleIcon} alt="icon" className={styles.icon} />
-        ),
-      },
-      {
-        label: "agile and scrum training and consulting",
-        path: "/agile-and-scrum-training-consulting",
-        icon: <Images src={bookIcon} alt="icon" className={styles.icon} />,
-      },
-    ],
   },
   {
     label: "contact",
