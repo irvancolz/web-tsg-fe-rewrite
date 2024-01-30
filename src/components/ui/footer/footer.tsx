@@ -11,42 +11,42 @@ import { GrLinkedin } from "react-icons/gr";
 const services = [
   {
     label: "tailor-made application development",
-    path: "/tailor-made-application-development",
+    path: "/under-construction",
   },
   {
     label: "technology managed services",
-    path: "/technology-managed-services",
+    path: "/under-construction",
   },
   {
     label: " IT manpower supply",
-    path: "/it-manpower-supply",
+    path: "/under-construction",
   },
   {
     label: "IT roadmap and strategic planning",
-    path: "/it-roadmap-and-strategic-planning",
+    path: "/under-construction",
   },
   {
     label: "software quality assurance and security testing",
-    path: "/software-qa-and-security-testing",
+    path: "/under-construction",
   },
   {
     label: "agile and scrum training and consulting",
-    path: "/agile-and-scrum-training-consulting",
+    path: "/under-construction",
   },
 ];
 
 const links = [
   {
     label: "about us",
-    path: "/about-us",
+    path: "/under-construction",
   },
   {
     label: "services",
-    path: "/our-services",
+    path: "/under-construction",
   },
   {
     label: "contact",
-    path: "/contact",
+    path: "/under-construction",
   },
   {
     label: "blog / news / events",

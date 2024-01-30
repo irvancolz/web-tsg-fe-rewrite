@@ -14,15 +14,15 @@ import Link from "next/link";
 const links: NavigationProps[] = [
   {
     label: "about us",
-    path: "/about-us",
+    path: "/under-construction",
   },
   {
     label: "services",
-    path: "/our-services",
+    path: "/under-construction",
   },
   {
     label: "contact",
-    path: "/contact",
+    path: "/under-construction",
   },
   {
     label: "blog / news / events",
