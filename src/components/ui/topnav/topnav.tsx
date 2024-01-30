@@ -31,6 +31,7 @@ const links: NavigationProps[] = [
 ];
 export function Topnav() {
   const [scroll, setScroll] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {
     const func = () => {
       setScroll(() => scrollY);
@@ -52,20 +53,29 @@ export function Topnav() {
       <div className={styles.logo_container}>
         <Link href={"/"}>
           <Images
+            onClick={() => setOpen(() => false)}
             className={styles.tsg_logo}
             alt="tsg logo"
             src={getStaticAssetsPath("/images/png", "logo-tsg-light.png")}
           />
         </Link>
-        <Button variant="unstyled" className={styles.hamburger}>
+        <Button
+          variant="unstyled"
+          className={styles.hamburger}
+          onClick={() => setOpen((curr) => !curr)}
+        >
           <GiHamburgerMenu style={{ fill: "#fff", fontSize: "2rem" }} />
         </Button>
-        <nav className="nav">
+        <nav
+          className={styles.nav}
+          data-open={open}
+          onClick={() => setOpen(() => false)}
+        >
           {/* desktop topnav */}
-          <ul className={styles.nav}>
+          <ul className={styles.nav_list}>
             {links.map((path, i) => {
               return (
-                <li key={i}>
+                <li key={i} onClick={() => setOpen(() => false)}>
                   <TopnavNavigations key={i} {...path} />
                 </li>
               );
