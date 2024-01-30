@@ -13,53 +13,7 @@ const nextConfig = {
     domains: ["localhost", "web-be-tsg-6x2sh.ondigitalocean.app"],
   },
   async redirects() {
-    return [
-      {
-        source: "/about-us",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/our-services",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/contact",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/tailor-made-application-development",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/technology-managed-services",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/it-manpower-supply",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/it-roadmap-and-strategic-planning",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/software-qa-and-security-testing",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/agile-and-scrum-training-consulting",
-        destination: "/under-construction",
-        permanent: true,
-      },
-    ];
+    return [];
   },
 };
 

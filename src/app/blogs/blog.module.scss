@@ -54,6 +54,10 @@
     &_title {
       text-transform: capitalize;
       text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     &_categories {
