@@ -1,69 +1,69 @@
-.tsg_logo{
-    height: 3rem;
-    aspect-ratio: 487/120;
-    &_sm{
-        aspect-ratio: 1;
-        width: 4rem;
-        display: block;
-    }
+.tsg_logo {
+  height: 3rem;
+  aspect-ratio: 487/120;
+  &_sm {
+    aspect-ratio: 1;
+    width: 4rem;
+    display: block;
+  }
 
-    @media (min-width :768px) {
-        display: block;
-        &_sm{
-            display: none;
-        }
+  @media (min-width: 768px) {
+    display: block;
+    &_sm {
+      display: none;
     }
+  }
 }
 
-.odoo_logo{
-    height: 3rem;
-    aspect-ratio: 177/82;
-    display: none;
-
-    @media (min-width :768px) {
-        display: block;
-    }
-}
-
-.container{
-    position: sticky;
-    top: 0;
-    background-color: var(--bg-col);
-    padding: 1rem;
-    transition: background-color .3s ease-in-out;
-    z-index: 100;
-
-    @media (min-width: 768px) {
-        padding: .5rem 5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
-
-.nav{
+.odoo_logo {
+  height: 3rem;
+  aspect-ratio: 177/82;
   display: none;
 
-    @media (min-width :768px) {
-        display: flex;
-        align-items: center;
-        gap: .5rem;
-    }
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
-.icon{
-    aspect-ratio: 1;
-    width: 2rem;
-}
+.container {
+  position: sticky;
+  top: -1px;
+  background-color: var(--bg-col);
+  padding: 1rem;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 100;
 
-.logo_container{
+  @media (min-width: 768px) {
+    padding: 0.5rem 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
 }
 
-.hamburger{
-    @media (min-width: 768px) {
-        display: none;
-    }
+.nav {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.icon {
+  aspect-ratio: 1;
+  width: 2rem;
+}
+
+.logo_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hamburger {
+  @media (min-width: 768px) {
+    display: none;
+  }
 }
