@@ -3,6 +3,7 @@ import { Images } from "@/components";
 import Link from "next/link";
 import React from "react";
 import style from "./page.module.scss";
+import { formatDate } from "@/utils";
 
 export default async function Page({
   params: { title },
@@ -20,7 +21,7 @@ export default async function Page({
     <section className={style.blog}>
       <div className={style.blog_header}>
         <h1 className={style.blog_title}>{blogTitle}</h1>
-        <p className={style.blog_date}>{createdAt}</p>
+        <p className={style.blog_date}>{formatDate(createdAt)}</p>
         <ul className={style.blog_categories}>
           {Categories.map((category) => {
             return (

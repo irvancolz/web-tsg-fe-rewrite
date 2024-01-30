@@ -1,14 +1,16 @@
-import { getAllBlog, getAllCategories } from "@/api";
-import React from "react";
+import { getAllBlog } from "@/api";
 import style from "./blog.module.scss";
 import Link from "next/link";
 import { Images } from "@/components";
 
 export const revalidate = 0;
 
-export default async function Page() {
-  // const categories = await getAllCategories();
-  const blogs = await getAllBlog();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { category: string | undefined };
+}) {
+  const blogs = (await getAllBlog(searchParams?.category)) || [];
   return (
     <div className={style.blogs}>
       {blogs.map((blog) => {

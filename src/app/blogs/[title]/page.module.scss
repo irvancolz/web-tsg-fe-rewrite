@@ -11,6 +11,11 @@
     margin-bottom: 2rem;
   }
 
+  &_date {
+    margin-block: 1rem;
+    color: var(--col-tundora-400);
+  }
+
   &_categories {
     display: flex;
     flex-wrap: wrap;

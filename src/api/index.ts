@@ -2,8 +2,14 @@ import { Blog, BlogDetail, Categories } from "@/types";
 
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export async function getAllBlog(): Promise<Blog[]> {
-  const req = await fetch(`${domain}/blog`);
+export async function getAllBlog(category: string = ""): Promise<Blog[]> {
+  let url = "/blog";
+
+  // if (category) {
+  //   url += `/get-by-category-id/${category}`;
+  // }
+
+  const req = await fetch(`${domain}${url}`);
   const res = await req.json();
   return res.results;
 }

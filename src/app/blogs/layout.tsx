@@ -16,7 +16,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
           {categories.map((category) => {
             return (
               <li key={category.id} className={style.link}>
-                <Link href={`/blogs?category=${category.CategoryName}`}>
+                <Link href={`/blogs?category=${category.id}`}>
                   {category.CategoryName}
                 </Link>
               </li>
