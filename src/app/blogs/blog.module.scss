@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.link {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--col-tundora-700);
+  cursor: pointer;
+  text-transform: capitalize;
+  width: fit-content;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 350px;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.categories_container {
+  position: sticky;
+  top: 10rem;
+}
+
+.blogs {
+  max-width: 50em;
+  width: 100%;
+  display: grid;
+  gap: 6rem;
+
+  &_content {
+    &_img {
+      aspect-ratio: 16/9;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    &_desc {
+      overflow: hidden;
+      height: calc(1.5rem * 3);
+      margin-block: 1rem;
+
+      p {
+        color: var(--col-blue-200);
+      }
+    }
+
+    &_title {
+      text-transform: capitalize;
+      text-decoration: underline;
+    }
+
+    &_categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+}
+
+// web-be-tsg-6x2sh.ondigitalocean.app

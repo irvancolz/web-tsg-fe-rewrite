@@ -9,6 +9,9 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  images: {
+    domains: ["localhost", "web-be-tsg-6x2sh.ondigitalocean.app"],
+  },
   async redirects() {
     return [
       {
@@ -23,11 +26,6 @@ const nextConfig = {
       },
       {
         source: "/contact",
-        destination: "/under-construction",
-        permanent: true,
-      },
-      {
-        source: "/blogs",
         destination: "/under-construction",
         permanent: true,
       },

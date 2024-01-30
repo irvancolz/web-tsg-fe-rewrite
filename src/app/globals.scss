@@ -126,6 +126,7 @@ a{
   background-color: var(--col-black);
   @media (min-width : 768px) {
     translate: 0 -4rem;
+    min-height: 100vh;
     padding: 5rem;
   }
 }
