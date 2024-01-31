@@ -13,7 +13,7 @@ export default async function Page({
   const blogs = (await getAllBlog(searchParams?.category)) || [];
   return (
     <div className={style.blogs}>
-      {blogs.map((blog) => {
+      {(blogs ? blogs : []).map((blog) => {
         return (
           <section key={blog.id} className={style.blogs_content}>
             <Images
