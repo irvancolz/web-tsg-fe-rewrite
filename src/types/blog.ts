@@ -1,20 +1,21 @@
-export type BlogDetail = {
+export type Blog = {
   id: number;
   title: string;
   attachment: string;
   content: string;
-  Categories: { id: number; CategoryName: string }[];
-  createdAt: string;
-  updatedAt: string;
+  created_at: string;
+  updated_at: string;
+  // reminder: update this props when migrate to new db
+  tsg_blog_categories: { tsg_categories: Categories }[];
 };
 
-export type Blog = {
-  Categories: string[];
-} & Omit<BlogDetail, "updatedAt" | "createdAt" | "Categories">;
+// export type Blog = {
+//   categories: string[];
+// } & Omit<BlogDetail, "updated_at" | "created_at" | "categories">;
 
 export type Categories = {
   id: number;
-  CategoryName: string;
-  createdAt: string;
-  updatedAt: string;
+  name: string;
+  created_at: string;
+  updated_at?: string;
 };

@@ -1,7 +1,7 @@
-import { getAllBlog } from "@/api";
 import style from "./blog.module.scss";
 import Link from "next/link";
 import { Images } from "@/components";
+import { getAllBlog, getAllBlogWithCategories } from "@/api/supabase";
 
 export const revalidate = 0;
 
@@ -10,7 +10,13 @@ export default async function Page({
 }: {
   searchParams?: { category: string | undefined };
 }) {
-  const blogs = (await getAllBlog(searchParams?.category)) || [];
+  async function getData() {
+    if (!searchParams?.category) {
+      return await getAllBlog();
+    }
+    return await getAllBlogWithCategories(searchParams.category);
+  }
+  const blogs = await getData();
   return (
     <div className={style.blogs}>
       {(blogs ? blogs : []).map((blog) => {
@@ -30,11 +36,13 @@ export default async function Page({
                 dangerouslySetInnerHTML={{ __html: blog.content }}
               ></div>
               <ul className={style.blogs_content_categories}>
-                {blog.Categories.map((category, i) => {
+                {blog.tsg_blog_categories.map((category, i) => {
                   return (
                     <li key={i} className={style.link}>
-                      <Link href={`/blogs?category=${category}`}>
-                        {category}
+                      <Link
+                        href={`/blogs?category=${category.tsg_categories.name}`}
+                      >
+                        {category.tsg_categories.name}
                       </Link>
                     </li>
                   );

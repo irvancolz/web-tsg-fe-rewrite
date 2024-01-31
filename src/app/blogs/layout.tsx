@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import style from "./blog.module.scss";
-import { getAllCategories } from "@/api";
+import { getAllCategories } from "@/api/supabase";
 import Link from "next/link";
 
 export default async function Layout({ children }: { children: ReactNode }) {
@@ -13,11 +13,11 @@ export default async function Layout({ children }: { children: ReactNode }) {
       >
         <h3>All Blog Categories</h3>
         <ul className={style.categories}>
-          {categories.map((category) => {
+          {(categories ? categories : []).map((category) => {
             return (
-              <li key={category.id} className={style.link}>
-                <Link href={`/blogs?category=${category.id}`}>
-                  {category.CategoryName}
+              <li key={category.name} className={style.link}>
+                <Link href={`/blogs?category=${category.name}`}>
+                  {category.name}
                 </Link>
               </li>
             );
