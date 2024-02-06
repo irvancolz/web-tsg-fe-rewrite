@@ -1,5 +1,4 @@
 import {
-  CompanyService,
   CompanyStrength,
   HomeBackstory,
   HomeHero,
@@ -16,7 +15,6 @@ export default function Home() {
       <ProjectDirectorWords />
       <CompanyStrength />
       <Partners />
-      <CompanyService />
     </main>
   );
 }

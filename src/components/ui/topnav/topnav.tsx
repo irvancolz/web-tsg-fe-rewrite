@@ -18,7 +18,7 @@ const links: NavigationProps[] = [
   },
   {
     label: "services",
-    path: "/under-construction",
+    path: "/service",
   },
   {
     label: "contact",
