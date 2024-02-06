@@ -1,27 +1,45 @@
 .container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  height: 90vh;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    height: 100vh;
+  }
 
   .content {
-    max-width: 50vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    @media (min-width: 768px) {
+      max-width: 50vw;
+    }
   }
 }
 
 .img {
-  aspect-ratio: 1;
-  height: calc(100vh - 5rem);
+  display: none;
+
+  @media (min-width: 768px) {
+    aspect-ratio: 1;
+    height: calc(100vh - 5rem);
+    display: block;
+  }
 }
 
 .title {
   width: 10em;
-  font-size: 7rem;
   text-transform: capitalize;
   height: 1.25em;
+  font-size: 5rem;
+
+  @media (min-width: 768px) {
+    font-size: 7rem;
+  }
 }
 
 .socials {
@@ -49,6 +67,7 @@
 .locations {
   display: flex;
   gap: 2rem;
+  justify-content: center;
 
   &_name {
     text-transform: capitalize;
