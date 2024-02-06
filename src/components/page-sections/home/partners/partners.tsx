@@ -56,6 +56,18 @@ const partners = [
     ratio: 240 / 103,
     img: "mindid.webp",
   },
+  {
+    ratio: 240 / 103,
+    img: "pgn.webp",
+  },
+  {
+    ratio: 240 / 103,
+    img: "wavemaker.webp",
+  },
+  {
+    ratio: 307 / 88,
+    img: "rz-azra.webp",
+  },
 ];
 
 const partners2 = [

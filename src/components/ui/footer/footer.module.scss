@@ -1,109 +1,111 @@
-.footer{
-    background-color: var(--col-blue-800);
-    border-radius: .5rem .5rem 0 0;
-    position: sticky;
-    padding: 1rem;
-    z-index: 1;
-    bottom: 0;
-    width: 100%;
-    height: 70vh;
+.footer {
+  background-color: var(--col-blue-800);
+  border-radius: 0.5rem 0.5rem 0 0;
+  position: sticky;
+  padding: 1rem;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  height: 70vh;
 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-        "services links"
-        "services links"
-        "services support"
-        "services support"
-        "main main"
-        "main main"; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "services links"
+    "services links"
+    "services support"
+    "services support"
+    "main main"
+    "main main";
 
-    
+  @media (min-width: 768px) {
+    height: fit-content;
+    padding: 2rem 5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "main main services links"
+      "main main services support";
+  }
+
+  .logo {
+    height: 6rem;
+    aspect-ratio: 487/120;
+    margin-inline: auto;
+
     @media (min-width: 768px) {
-        height: fit-content;
-        padding: 2rem 5rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr; 
-        grid-template-rows: 1fr 1fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          "main main services links"
-          "main main services support"; 
+      margin-inline: 0;
     }
+  }
 
-    .logo{
-        height: 6rem;
-        aspect-ratio: 487/120;
-        margin-inline: auto;
+  h3 {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+  }
 
-        @media (min-width:768px) {
-            margin-inline: 0;
-        }
+  .sections {
+    margin-bottom: 2rem;
+
+    &:nth-child(1) {
+      grid-area: main;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      text-align: center;
+
+      @media (min-width: 768px) {
+        text-align: left;
+      }
     }
-
-     h3{
-        margin-bottom: 1rem;
-        text-transform: capitalize;
+    &:nth-child(2) {
+      grid-area: links;
     }
-
-    .sections{
-        margin-bottom: 2rem;
- 
-        &:nth-child(1) { 
-            grid-area: main;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-
-            text-align: center;
-
-            @media (min-width : 768px) {
-                text-align: left;
-            }
-    
-         }
-        &:nth-child(2) { grid-area: links; }
-        &:nth-child(3) { grid-area: services; }
-        &:nth-child(4) { grid-area: support; }
+    &:nth-child(3) {
+      grid-area: services;
     }
-
-    .links{
-        display: flex;
-        flex-direction: column;
-        gap: .25rem;
-        max-width: 15rem;
+    &:nth-child(4) {
+      grid-area: support;
     }
+  }
 
-    .link{
-        font-size: .9rem;
-        text-transform: capitalize;
-        
-        &:hover{
-            text-decoration: underline;
-        }
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-width: 15rem;
+  }
+
+  .link {
+    font-size: 0.9rem;
+    text-transform: capitalize;
+
+    &:hover {
+      text-decoration: underline;
     }
-    
-    .socials{
-        margin-top: 1rem;
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        
-        @media (min-width : 768px) {
-            justify-content: flex-start;
-        }
+  }
 
+  .socials {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
     }
+  }
 
-    .socialmedia{
-       font-size: 2rem;
-    }
+  .socialmedia {
+    font-size: 2rem;
+  }
 
-    .text{
-        font-size: .9rem;
-
-    }
+  .text {
+    font-size: 0.9rem;
+  }
 }

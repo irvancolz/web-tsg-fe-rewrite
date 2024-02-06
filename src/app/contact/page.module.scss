@@ -1,0 +1,71 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .content {
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.img {
+  aspect-ratio: 1;
+  height: calc(100vh - 5rem);
+}
+
+.title {
+  width: 10em;
+  font-size: 7rem;
+  text-transform: capitalize;
+  height: 1.25em;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  &_icon {
+    font-size: 1.5rem;
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+  width: fit-content;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.locations {
+  display: flex;
+  gap: 2rem;
+
+  &_name {
+    text-transform: capitalize;
+    font-size: 1.25rem;
+  }
+
+  &_card {
+    max-width: 20em;
+  }
+
+  &_address {
+    font-size: 0.75rem;
+    color: var(--col-tundora-300);
+    line-height: 1em;
+
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+}

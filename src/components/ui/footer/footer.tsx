@@ -38,7 +38,7 @@ const services = [
 const links = [
   {
     label: "about us",
-    path: "/under-construction",
+    path: "/about",
   },
   {
     label: "services",

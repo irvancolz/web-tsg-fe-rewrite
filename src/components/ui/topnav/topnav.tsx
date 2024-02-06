@@ -14,7 +14,7 @@ import Link from "next/link";
 const links: NavigationProps[] = [
   {
     label: "about us",
-    path: "/under-construction",
+    path: "/about",
   },
   {
     label: "services",
@@ -22,7 +22,7 @@ const links: NavigationProps[] = [
   },
   {
     label: "contact",
-    path: "/under-construction",
+    path: "/contact",
   },
   {
     label: "blog / news / events",
@@ -56,7 +56,7 @@ export function Topnav() {
             onClick={() => setOpen(() => false)}
             className={styles.tsg_logo}
             alt="tsg logo"
-            src={getStaticAssetsPath("/images/png", "logo-tsg-light.png")}
+            src={getStaticAssetsPath("/images/png", "icon_tsg.png")}
           />
         </Link>
         <Button
