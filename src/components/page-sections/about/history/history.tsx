@@ -38,14 +38,17 @@ export function History() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // ScrollTrigger.create({
-      //   trigger: containerRef.current,
-      //   start: "top center",
-      //   end: "bottom bottom",
-      //   pin: containerRef.current,
-      //   markers: true,
-      // });
-    });
+      gsap.from("p", {
+        opacity: 0,
+        y: 10,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 45%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
