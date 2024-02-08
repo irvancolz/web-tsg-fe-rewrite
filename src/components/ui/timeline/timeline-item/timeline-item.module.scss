@@ -4,6 +4,11 @@
   opacity: 0;
   position: relative;
 
+  & * {
+    translate: -10px 0;
+    transition: translate 0.5s ease-in-out;
+  }
+
   &::before,
   &::after {
     content: "";
@@ -20,6 +25,7 @@
     right: -1rem;
     translate: 0 -50%;
     top: 50%;
+    box-shadow: -1px 2px 3px var(--col-blue-200);
   }
 
   &::before {
@@ -30,10 +36,15 @@
     width: 0;
     transition: width 0.3s ease-in-out;
     z-index: -1;
+    box-shadow: -4px 3px 3px var(--col-blue-500);
   }
 
   &[data-show="true"] {
     opacity: 1;
+
+    & * {
+      translate: 0 0;
+    }
 
     &::before {
       width: calc(100% - 2rem);
@@ -42,16 +53,18 @@
 
   &_title {
     text-transform: capitalize;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
   &_date {
+    display: block;
     text-transform: capitalize;
-    color: var(--col-tundora-300);
-    font-size: 0.75rem;
+    color: var(--col-blue-200);
   }
 
   &_desc {
+    display: block;
     font-size: 1.25rem;
     width: calc(100% - 3rem);
+    color: var(--col-blue-200);
   }
 }

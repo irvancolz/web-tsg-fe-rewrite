@@ -38,7 +38,7 @@ export function History() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from("p", {
+      gsap.from(".p", {
         opacity: 0,
         y: 10,
         duration: 0.5,
@@ -59,7 +59,7 @@ export function History() {
         <Timeline event={timeline} />
       </div>
       <div id="text" className={styles.history_text}>
-        <p>
+        <p className="p">
           We saw a need for a company that prioritizes actual outcomes and
           handles client&apos;s pain areas directly, assuring a long-term
           influence on their business growth and success. We strive to provide

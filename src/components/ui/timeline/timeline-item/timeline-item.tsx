@@ -9,7 +9,7 @@ export function TimelineItem({ date, desc, title }: TimelineItemProps) {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
+      gsap.from(itemRef, {
         scrollTrigger: {
           trigger: itemRef.current,
           start: "top 45%",
@@ -25,6 +25,9 @@ export function TimelineItem({ date, desc, title }: TimelineItemProps) {
           onLeaveBack() {
             itemRef.current?.removeAttribute("data-show");
           },
+        },
+        onComplete: function () {
+          gsap.set(this.targets(), { clearProps: "all" });
         },
       });
     }, itemRef);
