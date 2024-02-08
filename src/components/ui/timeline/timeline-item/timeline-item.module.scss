@@ -1,4 +1,6 @@
 .content {
+  $borderCol: var(--col-blue-400);
+  $bgCol: var(--col-blue-900);
   padding: 0.5rem;
   transition: opacity 0.5s ease-in-out;
   opacity: 0;
@@ -14,7 +16,7 @@
     content: "";
     position: absolute;
     display: block;
-    background-color: var(--col-blue-700);
+    background-color: $bgCol;
   }
 
   &::after {
@@ -25,7 +27,8 @@
     right: -1rem;
     translate: 0 -50%;
     top: 50%;
-    box-shadow: -1px 2px 3px var(--col-blue-200);
+    box-shadow: -1px 2px 3px $borderCol;
+    border: 2px solid $borderCol;
   }
 
   &::before {
@@ -36,7 +39,8 @@
     width: 0;
     transition: width 0.3s ease-in-out;
     z-index: -1;
-    box-shadow: -4px 3px 3px var(--col-blue-500);
+    box-shadow: -3px 4px 5px $borderCol;
+    border: 2px solid $borderCol;
   }
 
   &[data-show="true"] {
