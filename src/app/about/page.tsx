@@ -1,3 +1,4 @@
+import { CompanyValues, History } from "@/components";
 import React from "react";
 
 export default function Page() {
@@ -18,6 +19,8 @@ export default function Page() {
         you&lsquo;re ensuring a successful journey into the future of
         technology.
       </p>
+      <CompanyValues />
+      <History />
     </div>
   );
 }

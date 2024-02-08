@@ -1,0 +1,28 @@
+.history {
+  display: flex;
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  padding: 1rem;
+  padding-block: 10rem;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  & > * {
+    flex-basis: 50%;
+  }
+
+  &_text {
+    font-size: 1.5rem;
+    justify-self: center;
+
+    @media (min-width: 768px) {
+      position: sticky;
+      top: 30%;
+    }
+  }
+}
