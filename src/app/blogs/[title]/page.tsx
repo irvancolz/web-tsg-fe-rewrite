@@ -35,7 +35,12 @@ export default async function Page({
           })}
         </ul>
       </div>
-      <Images className={style.blog_img} alt={blogTitle} src={attachment} />
+      <Images
+        className={style.blog_img}
+        alt={blogTitle}
+        src={attachment}
+        style={{ objectFit: "cover" }}
+      />
 
       <div
         dangerouslySetInnerHTML={{ __html: content }}
