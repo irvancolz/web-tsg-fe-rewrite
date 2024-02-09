@@ -42,6 +42,9 @@ export function CompanyValues() {
         y: 10,
         ease: "power4.inOut",
         stagger: 0.1,
+        onComplete: function () {
+          gsap.set(this.targets(), { clearProps: "all" });
+        },
       }).from('[data-animation="card"]', {
         opacity: 0,
         y: 20,
