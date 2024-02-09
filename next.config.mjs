@@ -12,10 +12,6 @@ const nextConfig = {
   images: {
     domains: ["localhost", "web-be-tsg-6x2sh.ondigitalocean.app"],
   },
-  async redirects() {
-    return [];
-  },
-  output: "export",
 };
 
 export default nextConfig;
