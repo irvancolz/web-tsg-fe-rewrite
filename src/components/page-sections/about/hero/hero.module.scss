@@ -17,6 +17,7 @@
     @media (min-width: 768px) {
       display: block;
       aspect-ratio: 1;
+      max-width: 45vw;
       width: 100%;
       filter: brightness(0.6);
     }
@@ -31,6 +32,8 @@
       font-size: 3rem;
       margin-bottom: 0.5em;
       text-transform: capitalize;
+      display: flex;
+      gap: 0.25em;
     }
 
     &_quote {
