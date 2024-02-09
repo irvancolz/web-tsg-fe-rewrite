@@ -15,6 +15,7 @@ const nextConfig = {
   async redirects() {
     return [];
   },
+  output: "export",
 };
 
 export default nextConfig;
