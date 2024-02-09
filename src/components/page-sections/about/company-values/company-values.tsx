@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useLayoutEffect, useRef } from "react";
 import style from "./company-values.module.scss";
-import { Container } from "@/components";
+import gsap from "gsap";
+import SplitType from "split-type";
 
 const companyValues: { title: string; desc: string }[] = [
   {
@@ -18,9 +20,40 @@ const companyValues: { title: string; desc: string }[] = [
 ];
 
 export function CompanyValues() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const highlightText = SplitType.create('[data-animation="highlight"]', {
+      types: "lines",
+    });
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      tl.from(highlightText.lines, {
+        opacity: 0,
+        duration: 1,
+        y: 10,
+        ease: "power4.inOut",
+        stagger: 0.1,
+      }).from('[data-animation="card"]', {
+        opacity: 0,
+        y: 20,
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className={style.container}>
-      <p className={style.title}>
+    <div ref={containerRef} className={style.container}>
+      <p className={`${style.title}`} data-animation="highlight">
         Tristar Surya Gemilang (TSG) is a global tech provider emphasizing
         collaboration and innovation. Our boss-less structure fosters agility,
         allowing swift adaptation to diverse client needs. We offer tailored app
@@ -33,7 +66,7 @@ export function CompanyValues() {
       <div className={style.values}>
         {companyValues.map((item, i) => {
           return (
-            <div key={i} className={style.values_card}>
+            <div key={i} className={style.values_card} data-animation="card">
               <h3 className={style.values_card_title}>{item.title}</h3>
               <p className={style.values_card_desc}>{item.desc}</p>
             </div>
