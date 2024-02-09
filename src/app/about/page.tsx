@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <div>
       <Hero />
-      {/* <CompanyValues /> */}
+      <CompanyValues />
       <History />
     </div>
   );

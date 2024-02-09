@@ -19,7 +19,17 @@ const companyValues: { title: string; desc: string }[] = [
 
 export function CompanyValues() {
   return (
-    <Container>
+    <div className={style.container}>
+      <p className={style.title}>
+        Tristar Surya Gemilang (TSG) is a global tech provider emphasizing
+        collaboration and innovation. Our boss-less structure fosters agility,
+        allowing swift adaptation to diverse client needs. We offer tailored app
+        development, IT services, manpower supply, and strategic planning.
+        Through QA, security testing, and Agile/Scrum training, we ensure
+        quality. We prioritize building partnerships to deliver lasting value.
+        With TSG, you&apos;re not just embracing digital transformation;
+        you&apos;re securing a successful tech future.
+      </p>
       <div className={style.values}>
         {companyValues.map((item, i) => {
           return (
@@ -30,6 +40,6 @@ export function CompanyValues() {
           );
         })}
       </div>
-    </Container>
+    </div>
   );
 }
