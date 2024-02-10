@@ -5,7 +5,6 @@ import gsap from "gsap";
 import "./globals.scss";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
-import { Footer, Topnav } from "@/components";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,13 +37,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" sizes="16x16" href="/icon_tsg.png" />
         <title>PT Tristar Surya Gemilang</title>
       </head>
-      <body>
-        <Topnav />
-        <main>
-          <div id="main_container">{children}</div>
-        </main>
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
