@@ -10,9 +10,14 @@
     "export": "next export"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@floating-ui/react": "^0.26.6",
     "@studio-freight/lenis": "^1.0.34",
     "@supabase/supabase-js": "^2.39.3",
+    "framer-motion": "^11.0.3",
     "gsap": "^3.12.5",
     "next": "14.1.0",
     "react": "^18",
