@@ -1,0 +1,46 @@
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 1rem 2rem;
+  background-color: var(--col-white);
+  border-radius: 0.25rem;
+  max-width: 60rem;
+  display: flex;
+  gap: 2rem;
+  border: 1px solid var(--col-blue-200);
+  box-shadow: 0.15rem 0.15rem 0.25rem var(--col-blue-100);
+  margin-inline: auto;
+  min-height: 50vh;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    &_img {
+      aspect-ratio: 1007 / 248;
+      width: 50%;
+    }
+    &_title {
+      font-size: 1.5rem;
+      line-height: 1em;
+      text-transform: capitalize;
+    }
+    &_desc {
+      font-size: 1.25rem;
+    }
+  }
+  .right {
+    display: grid;
+    place-items: center;
+    &_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  }
+}

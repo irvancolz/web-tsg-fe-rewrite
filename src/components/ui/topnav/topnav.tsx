@@ -29,7 +29,7 @@ const links: NavigationProps[] = [
     path: "/blogs",
   },
 ];
-export function Topnav() {
+export function Topnav({ variant = "" }: { variant?: "static" | "" }) {
   const [scroll, setScroll] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
   useEffect(() => {
@@ -45,7 +45,12 @@ export function Topnav() {
     <header
       style={
         {
-          "--bg-col": scroll > 0 ? "var(--col-blue-800)" : "transparent",
+          "--bg-col":
+            scroll > 0
+              ? "var(--col-blue-800)"
+              : variant == ""
+              ? "transparent"
+              : "var(--col-blue-800)",
         } as CSSProperties
       }
       className={styles.container}
