@@ -1,0 +1,38 @@
+.container{
+    --animation-duration: 40s;
+    --slide-width: 100px;
+    overflow: hidden;
+    max-width: 90vw;
+    width: calc(var(--slide-width) * var(--total-slide));
+    margin-inline: auto;
+    
+    
+    .partners{
+        display: flex;
+        height: 4rem;
+        animation: scroll var(--animation-duration) infinite linear;
+        
+            &:nth-last-of-type(){
+                --animation-duration: 35s;
+                animation-direction: reverse;
+            }
+    
+    &_logo{
+        aspect-ratio: var(--ratio, 240/103);
+        width:var(--slide-width);
+        filter: grayscale(100%);
+
+        transition: filter .3s ease-in-out;
+
+        &:hover{
+            filter: grayscale(0);
+        }
+    }
+}
+
+}
+
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(var(--slide-width) * var(--total-slide) * -1 ))}
+}

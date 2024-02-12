@@ -1,0 +1,62 @@
+.strength{
+    --card-width: 15em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+    gap: 1rem 1rem;
+    
+    
+    @media (min-width: 768px) {
+        --card-width: 20em;
+        margin-inline: auto;
+    }
+
+    &_card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        border-radius: .25rem;
+        transition: color .3s ease-in-out;
+        color: var(--col-blue-200);
+        
+        &:hover{
+            color: var(--col-white);
+        }
+
+        @media (min-width: 768px) {
+           flex-direction: row;
+        }
+
+        .icon{
+            font-size: 4rem;
+            flex-basis: 35%;
+        }
+    }
+}
+
+.header{
+    width: fit-content;
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h2{
+        font-size: 2rem;
+        margin-bottom: .5rem;
+    }
+
+    p{
+        color: var(--col-blue-200);
+    }
+
+    @media (min-width:768px) {
+        margin-bottom: 4rem;
+    }
+}
+
+.container{
+   place-self: center;
+   min-width: 80vw;
+}

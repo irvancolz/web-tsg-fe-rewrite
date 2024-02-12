@@ -1,0 +1,64 @@
+.btn{
+    padding: .5rem .5rem;
+    appearance: none;
+    outline-color: transparent;
+    border-color: transparent;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+    border-radius: .25rem;
+    font-weight: 500;
+    min-width: 7rem;
+
+    &:not([data-variant='unstyled']){
+        &:has(> :last-child:nth-child(1)){
+            padding: .5rem 2rem;
+        }
+    }
+
+
+    &:focus, :focus-visible {
+        outline-color: var(--col-azure-900);
+        outline-offset: .25rem;
+    }
+
+    &[data-variant="solid"]{
+        background-color: var(--bg-col, --col-azure-800);
+        color: var(--col-grey-50, #fff);
+
+        &:hover{
+            background-color: var(--col-azure-900);
+        }
+
+        &:focus, :focus-visible {
+            outline-color: var(--col-azure-900);
+            outline-offset: .25rem;
+        }
+    }
+
+    &[data-variant='outlined']{
+        border: 2px solid  var(--bg-col, --col-azure-800);
+        color:  var(--bg-col, --col-azure-800);
+        &:hover{
+            background-color: var(--col-azure-100);
+        }
+    
+        &:focus, :focus-visible {
+            outline-color: var(--col-azure-900);
+            outline-offset: .25rem;
+        }
+    }
+
+    &[data-variant='unstyled']{
+        padding: 0;
+        border-radius: .25rem;
+        min-width: fit-content;
+    }
+}
+
+.content{
+    flex-grow: 1;
+}

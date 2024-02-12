@@ -1,0 +1,100 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+  height: max-content;
+  padding: 3rem 0;
+  gap: 8rem;
+
+  @media (min-width: 768px) {
+    height: calc(80vh - 6rem);
+    margin-top: auto;
+    flex-direction: row-reverse;
+    & > * {
+      flex-basis: 50%;
+    }
+  }
+
+  .article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+
+    .title {
+      font-size: 2rem;
+      line-height: 1.25em;
+    }
+    .desc {
+      color: var(--col-blue-200);
+    }
+  }
+}
+
+.images {
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  grid-template-areas:
+    "img_1 img_1 img_2 img_2"
+    "img_1 img_1 img_2 img_2"
+    "img_1 img_1 img_3 img_3"
+    "img_1 img_1 img_3 img_3";
+
+  .img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      padding: 1rem;
+      color: var(--col-blue-100);
+      bottom: 0;
+      width: 100%;
+      font-weight: 600;
+      font-size: 1.25rem;
+      background: linear-gradient(
+        0deg,
+        #092859bd 42%,
+        #09285993 65%,
+        #09285960 73%,
+        rgba(34, 45, 105, 0) 100%
+      );
+      transition: translate 0.3s ease-in-out;
+      translate: 0 100%;
+    }
+
+    &:hover::before {
+      translate: 0 0;
+    }
+  }
+  .img:first-child {
+    grid-area: img_1;
+    background-image: url("../../../../../../public/images/webp/agile_training.webp");
+
+    &::before {
+      content: "Agile Workshop And Training";
+    }
+  }
+  .img:nth-child(2) {
+    grid-area: img_2;
+    background-image: url("../../../../../../public/images/webp/cyber_security.webp");
+
+    &::before {
+      content: "Cyber security services";
+    }
+  }
+  .img:nth-child(3) {
+    grid-area: img_3;
+    background-image: url("../../../../../../public/images/webp/app_development.webp");
+
+    &::before {
+      content: "App Development Service";
+    }
+  }
+}
