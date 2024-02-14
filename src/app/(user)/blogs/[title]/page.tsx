@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import style from "./page.module.scss";
 import { formatDate, normalizeString } from "@/utils";
+import { getSupabasePublicUrl } from "@/api/supabase/storage";
 
 export default async function Page({
   params: { title },
@@ -38,7 +39,7 @@ export default async function Page({
       <Images
         className={style.blog_img}
         alt={blogTitle}
-        src={attachment}
+        src={getSupabasePublicUrl(attachment)}
         style={{ objectFit: "cover" }}
       />
 

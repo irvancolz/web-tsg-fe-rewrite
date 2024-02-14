@@ -2,7 +2,7 @@ import React from "react";
 import style from "./page.module.scss";
 import { Images } from "@/components";
 import { getStaticAssetsPath } from "@/consts";
-import { Box, Button, Center, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Card, Center, Input, Stack } from "@chakra-ui/react";
 
 export default function Page() {
   return (
@@ -19,11 +19,11 @@ export default function Page() {
             Please login with provided credentials given.
           </p>
         </div>
-        <Stack>
+        <Stack justify={"center"}>
           <form className={style.right_form}>
             <Input placeholder="username" required />
             <Input placeholder="password" required />
-            <Button color={"blue"}>Login</Button>
+            <Button colorScheme="blue">Login</Button>
           </form>
         </Stack>
       </div>
