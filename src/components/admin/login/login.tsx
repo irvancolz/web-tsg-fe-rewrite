@@ -10,7 +10,7 @@ import {
   Stack,
   useBoolean,
 } from "@chakra-ui/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { FormEvent, useRef, useState } from "react";
 
 export function LoginForm() {
@@ -18,6 +18,7 @@ export function LoginForm() {
   const [password, setPassword] = useState<string>("");
   const [invalid, setInvalid] = useState<string>("");
   const [loading, setLoading] = useBoolean();
+  const router = useRouter();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -29,7 +30,7 @@ export function LoginForm() {
       });
       setUsername("");
       setPassword("");
-      redirect("/dashboard");
+      router.push("/dashboard");
     } catch (error: any) {
       setInvalid(error?.message);
     }

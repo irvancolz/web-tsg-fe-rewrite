@@ -1,0 +1,31 @@
+.sidebar {
+  background-color: var(--col-blue-600);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_link {
+    color: var(--col-white);
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0.5rem 0.5rem;
+    min-width: 15em;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: var(--col-blue-700);
+    }
+
+    &[data-active="true"] {
+      color: var(--col-blue-600);
+      background-color: var(--col-white);
+
+      &:hover {
+        background-color: var(--col-blue-50);
+      }
+    }
+  }
+}
