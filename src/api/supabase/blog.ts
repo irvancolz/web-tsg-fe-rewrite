@@ -11,7 +11,7 @@ export async function getAllBlog() {
     .select(`*, ${BLOG_CATEGORIES_TABLE}(${CATEGORIES_TABLE}(*))`)
     .order("created_at", { ascending: false });
   if (error) console.log(error.message);
-  return data as Blog[];
+  return data as unknown as Blog[];
 }
 
 export async function getBlog(name: string) {
