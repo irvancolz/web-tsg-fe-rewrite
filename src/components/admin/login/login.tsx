@@ -14,8 +14,8 @@ import { redirect, useRouter } from "next/navigation";
 import React, { FormEvent, useRef, useState } from "react";
 
 export function LoginForm() {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("tsgblogadmin@tsgitdev.com");
+  const [password, setPassword] = useState<string>("tsgblogadmin");
   const [invalid, setInvalid] = useState<string>("");
   const [loading, setLoading] = useBoolean();
   const router = useRouter();
@@ -57,11 +57,13 @@ export function LoginForm() {
               isInvalid={invalid != ""}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="username"
+              value={username}
             />
             <Input
               isInvalid={invalid != ""}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
+              value={password}
               placeholder="password"
             />
             <Button colorScheme="blue" type="submit" isLoading={loading}>

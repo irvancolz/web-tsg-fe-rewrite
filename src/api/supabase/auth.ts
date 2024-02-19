@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { supabase } from ".";
 
 export type LoginPayload = {
@@ -6,8 +5,10 @@ export type LoginPayload = {
   password: string;
 };
 
+const AUTH = supabase.auth;
+
 export async function login({ email, password }: LoginPayload) {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await AUTH.signInWithPassword({
     email,
     password,
   });
@@ -15,14 +16,20 @@ export async function login({ email, password }: LoginPayload) {
   if (error) {
     throw new Error(error.message);
   }
-
-  console.log(data);
 }
 
 export async function logout() {
-  const { error } = await supabase.auth.signOut();
+  const { error } = await AUTH.signOut();
   if (error) {
     console.log(error);
     return;
   }
+}
+
+export async function isAuthorized(): Promise<boolean> {
+  const { data, error } = await AUTH.getSession();
+  if (error) {
+    console.log(error);
+  }
+  return data.session != null;
 }
