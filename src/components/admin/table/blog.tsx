@@ -18,12 +18,18 @@ import {
   useDisclosure,
   Flex,
 } from "@chakra-ui/react";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdOutlineModeEdit } from "react-icons/md";
 
 export function BlogTable({ blogs }: { blogs: Blog[] }) {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const router = useRouter();
+
+  function openEditor(title: string) {
+    router.push(`/blog-management/${title}/edit`);
+  }
 
   return (
     <>
@@ -44,7 +50,7 @@ export function BlogTable({ blogs }: { blogs: Blog[] }) {
                   <Td>{i + 1}</Td>
                   <Td>{blog.title}</Td>
                   <Td>
-                    <Flex gap={".25rem"}>
+                    <Flex gap={".25rem"} onClick={() => openEditor(blog.title)}>
                       <Button variant={"ghost"}>
                         <MdOutlineModeEdit />
                       </Button>

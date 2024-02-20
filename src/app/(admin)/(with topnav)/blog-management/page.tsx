@@ -10,7 +10,13 @@ export default async function Page() {
   return (
     <div className={style.container}>
       <Flex my={"3rem"}>
-        <Button colorScheme="blue" ml={"auto"} leftIcon={<BiPlus />}>
+        <Button
+          as={"a"}
+          href="/blog-management/add"
+          colorScheme="blue"
+          ml={"auto"}
+          leftIcon={<BiPlus />}
+        >
           Add new
         </Button>
       </Flex>
