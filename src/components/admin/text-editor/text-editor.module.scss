@@ -1,0 +1,18 @@
+.editor {
+  position: relative;
+  width: 100%;
+  min-width: 500px;
+
+  &::before {
+    content: attr(data-placeholder);
+    text-transform: capitalize;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    color: var(--col-tundora-500);
+    translate: 0 -50%;
+
+    display: var(--placeholder-show);
+  }
+}

@@ -9,13 +9,17 @@ export type Blog = {
   tsg_blog_categories: { tsg_categories: Categories }[];
 };
 
-// export type Blog = {
-//   categories: string[];
-// } & Omit<BlogDetail, "updated_at" | "created_at" | "categories">;
-
 export type Categories = {
   id: number;
   name: string;
   created_at: string;
   updated_at?: string;
+};
+
+type BlogContentType = "text" | "title" | "heading" | "img" | "list";
+
+export type BlogContent = {
+  type: BlogContentType;
+  // update to more dynamic types in the future
+  content: string | string[];
 };
