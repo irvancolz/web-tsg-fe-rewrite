@@ -2,7 +2,7 @@ import style from "./blog.module.scss";
 import Link from "next/link";
 import { Images } from "@/components";
 import { getAllBlog, getAllBlogWithCategories } from "@/api/supabase";
-import { getSupabasePublicUrl } from "@/api/supabase/storage";
+import { getDynamicAssetsUrl } from "@/utils";
 
 export const revalidate = 0;
 
@@ -25,7 +25,7 @@ export default async function Page({
           <section key={blog.id} className={style.blogs_content}>
             <Images
               alt={blog.title}
-              src={getSupabasePublicUrl(blog.attachment)}
+              src={getDynamicAssetsUrl(blog.attachment)}
               className={style.blogs_content_img}
               style={{
                 objectFit: "cover",

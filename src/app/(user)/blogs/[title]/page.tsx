@@ -3,8 +3,7 @@ import { Images, BlogContent } from "@/components";
 import Link from "next/link";
 import React from "react";
 import style from "./page.module.scss";
-import { formatDate, normalizeString } from "@/utils";
-import { getSupabasePublicUrl } from "@/api/supabase/storage";
+import { formatDate, getDynamicAssetsUrl, normalizeString } from "@/utils";
 
 export const revalidate = 0;
 
@@ -41,7 +40,7 @@ export default async function Page({
       <Images
         className={style.blog_img}
         alt={blogTitle}
-        src={getSupabasePublicUrl(attachment)}
+        src={getDynamicAssetsUrl(attachment)}
         style={{ objectFit: "cover" }}
       />
 
