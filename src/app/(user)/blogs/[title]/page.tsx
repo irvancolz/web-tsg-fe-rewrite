@@ -1,10 +1,12 @@
 import { getBlog } from "@/api/supabase";
-import { Images } from "@/components";
+import { Images, BlogContent } from "@/components";
 import Link from "next/link";
 import React from "react";
 import style from "./page.module.scss";
 import { formatDate, normalizeString } from "@/utils";
 import { getSupabasePublicUrl } from "@/api/supabase/storage";
+
+export const revalidate = 0;
 
 export default async function Page({
   params: { title },
@@ -43,10 +45,11 @@ export default async function Page({
         style={{ objectFit: "cover" }}
       />
 
-      <div
-        dangerouslySetInnerHTML={{ __html: content }}
-        className={style.blog_desc}
-      ></div>
+      <div className={style.blog_content}>
+        {content.map((item) => {
+          return <BlogContent key={item.id} {...item} />;
+        })}
+      </div>
     </section>
   );
 }

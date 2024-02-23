@@ -2,7 +2,7 @@ export type Blog = {
   id: number;
   title: string;
   attachment: string;
-  content: string;
+  content: BlogContent[];
   created_at: string;
   updated_at: string;
   // reminder: update this props when migrate to new db

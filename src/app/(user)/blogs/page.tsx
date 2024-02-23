@@ -35,10 +35,9 @@ export default async function Page({
               <Link href={`/blogs/${blog.title}`}>
                 <h2 className={style.blogs_content_title}>{blog.title}</h2>
               </Link>
-              <div
-                className={style.blogs_content_desc}
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              ></div>
+              <p className={style.blogs_content_desc}>
+                {blog.content.filter((e) => e.type == "text")[0].content}
+              </p>
               <ul className={style.blogs_content_categories}>
                 {blog.tsg_blog_categories.map((category, i) => {
                   return (
