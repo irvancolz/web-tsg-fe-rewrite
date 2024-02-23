@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  height: 4rem;
+  padding: 1rem;
+
+  .btn {
+    border-radius: 50%;
+    display: block;
+    margin-inline: auto;
+    aspect-ratio: 1;
+    border: 1px solid var(--col-tundora-200);
+    padding: 1rem;
+    background-color: transparent;
+    transition: all, 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--col-tundora-50);
+      border-color: var(--col-tundora-300);
+    }
+  }
+}

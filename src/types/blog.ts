@@ -16,9 +16,17 @@ export type Categories = {
   updated_at?: string;
 };
 
-type BlogContentType = "text" | "title" | "heading" | "img" | "list";
+export const BlogContentTypeFlag: BlogContentType[] = [
+  "text",
+  "heading",
+  "img",
+  "list",
+];
+
+export type BlogContentType = "text" | "heading" | "img" | "list";
 
 export type BlogContent = {
+  id: string;
   type: BlogContentType;
   // update to more dynamic types in the future
   content: string | string[];
