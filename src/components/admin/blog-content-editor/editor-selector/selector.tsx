@@ -17,6 +17,7 @@ import { RiText } from "react-icons/ri";
 import { RiHeading } from "react-icons/ri";
 import { PiListBold } from "react-icons/pi";
 import { InputFile } from "../../input";
+import { useBlogEditor } from "../../blog-editor/context";
 
 const logo: { [key: string]: ReactNode } = {
   text: <RiText />,
@@ -28,6 +29,13 @@ const logo: { [key: string]: ReactNode } = {
 export function ContentEditorSelector() {
   const { onToggle, onClose, isOpen } = useDisclosure();
   const inputRef = useRef<HTMLInputElement>(null);
+  const ctx = useBlogEditor();
+
+  if (!ctx) {
+    console.error(
+      "content blog editor must be used inside blog editor context."
+    );
+  }
 
   function handleSelect(types: BlogContentType) {
     const id = `${Date.now()}`;
@@ -45,8 +53,7 @@ export function ContentEditorSelector() {
       type: types,
     };
 
-    console.log(newData);
-
+    ctx.updateContent(newData);
     onToggle();
   }
 

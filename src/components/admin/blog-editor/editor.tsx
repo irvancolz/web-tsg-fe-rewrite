@@ -57,7 +57,14 @@ export function Editor({ data }: { data?: Blog }) {
           );
         })}
       </Wrap>
-      <Divider mt={"1rem"} h={"2px"} bg={"GrayText"} />
+      <Divider mt={"1rem"} h={"1px"} bg={"gray"} opacity={0.5} />
+      {content.map((c) => {
+        return (
+          <>
+            <TextEditor key={c.id} value={c.content as string} />
+          </>
+        );
+      })}
       <ContentEditorSelector />
     </div>
   );

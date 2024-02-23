@@ -9,3 +9,11 @@ export function getSupabasePublicUrl(path: string) {
   } = supabase.storage.from(STORAGE).getPublicUrl(path);
   return publicUrl;
 }
+
+function getAssets(url: string) {
+  if (url == "local") {
+    return url;
+  }
+  //  supabase
+  //  bucket lain
+}
