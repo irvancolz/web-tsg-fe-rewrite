@@ -16,7 +16,7 @@ import { CiImageOn } from "react-icons/ci";
 import { RiText } from "react-icons/ri";
 import { RiHeading } from "react-icons/ri";
 import { PiListBold } from "react-icons/pi";
-import { InputFile } from "../../input";
+import { FileInput } from "../../input";
 import { useBlogEditor } from "../../blog-editor/context";
 
 const logo: { [key: string]: ReactNode } = {
@@ -43,17 +43,28 @@ export function ContentEditorSelector() {
 
     if (types == "list") {
       content = [];
-    } else if (types == "img") {
-      content = inputRef.current?.value ?? "";
-    }
 
-    const newData: BlogContent = {
-      id,
-      content,
-      type: types,
+      const newData: BlogContent = {
+        id,
+        content,
+        type: types,
+      };
+
+      ctx.updateContent(newData);
+      onToggle();
+    }
+  }
+
+  function addImage(e: any) {
+    const imgUrl = URL.createObjectURL(e.target?.files?.[0]!);
+    if (!imgUrl) return;
+    const data: BlogContent = {
+      id: `${Date.now()}`,
+      type: "img",
+      content: imgUrl,
     };
 
-    ctx.updateContent(newData);
+    ctx.updateContent(data);
     onToggle();
   }
 
@@ -81,10 +92,10 @@ export function ContentEditorSelector() {
                     </button>
                   ) : (
                     <div className={style.btn}>
-                      <InputFile
+                      <FileInput
                         ref={inputRef}
                         label={logo[t]}
-                        onChange={() => handleSelect(t)}
+                        onChange={addImage}
                       />
                     </div>
                   )}

@@ -1,6 +1,12 @@
 "use client";
 import { BlogContent } from "@/types";
-import React, { ReactNode, createContext, useContext, useState } from "react";
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export type BlogEditorInterface = {
   title: string;
@@ -24,23 +30,38 @@ export function useBlogEditor() {
 }
 
 export function BlogEditorContext({ children }: { children: ReactNode }) {
-  const [title, setTitle] = useState<string>("");
-  const [content, setContent] = useState<BlogContent[]>([]);
-  const [attachment, setAttachment] = useState<string>("");
-  const [categories, setCategories] = useState<string[]>([]);
+  const [title, setTitles] = useState<string>("");
+  const [content, setContents] = useState<BlogContent[]>([]);
+  const [attachment, setAttachments] = useState<string>("");
+  const [categories, setCategoriess] = useState<string[]>([]);
+
+  function setTitle(a: string) {
+    return setTitles(() => a);
+  }
+
+  function setContent(a: BlogContent[]) {
+    return setContents(() => a);
+  }
+
+  function setAttachment(a: string) {
+    return setAttachments(() => a);
+  }
+
+  function setCategories(a: string[]) {
+    return setCategoriess(() => a);
+  }
 
   function updateContent(a: BlogContent) {
     const el = content.find((b) => a.id == b.id);
     if (!el) {
-      setContent((prev) => [...prev, a]);
+      setContent([...content, a]);
       return;
     }
 
     const idx = content.indexOf(el);
     const newContent = content;
     newContent[idx] = a;
-
-    setContent(() => newContent);
+    setContent(newContent);
   }
 
   function save() {

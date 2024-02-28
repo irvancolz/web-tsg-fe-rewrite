@@ -1,7 +1,8 @@
+"use client";
 import React, { ComponentProps, ReactNode, forwardRef, useRef } from "react";
 import style from "./file.module.scss";
 
-export const InputFile = forwardRef<
+export const FileInput = forwardRef<
   HTMLInputElement,
   { label: ReactNode } & ComponentProps<"input">
 >(({ label, ...rest }, ref) => {
@@ -15,4 +16,4 @@ export const InputFile = forwardRef<
   );
 });
 
-InputFile.displayName = "InputFile";
+FileInput.displayName = "InputFile";

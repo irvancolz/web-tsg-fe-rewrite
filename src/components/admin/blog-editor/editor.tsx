@@ -5,17 +5,19 @@ import TextEditor from "../text-editor";
 import style from "./editor.module.scss";
 import {
   Divider,
+  Stack,
   Tag,
   TagCloseButton,
   TagLabel,
+  Button,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { ContentEditorSelector } from "..";
+import { ContentEditorSelector, HeadingEditor } from "..";
+import ContentEditor from "./content-editor";
 
 export function Editor({ data }: { data?: Blog }) {
   const {
-    attachment,
     categories,
     content,
     save,
@@ -24,7 +26,6 @@ export function Editor({ data }: { data?: Blog }) {
     setContent,
     setTitle,
     title,
-    updateContent,
   } = useBlogEditor();
   const [newContent, setNewContent] = useState<BlogContent>({} as BlogContent);
 
@@ -33,13 +34,13 @@ export function Editor({ data }: { data?: Blog }) {
       setAttachment(data.attachment);
       setTitle(data.title);
       setCategories(data.tsg_blog_categories.map((e) => e.tsg_categories.name));
-      setContent([]);
+      setContent(data.content);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   return (
-    <div>
+    <div className={style.container}>
       <TextEditor
         className={style.title}
         placeholder="title"
@@ -58,13 +59,11 @@ export function Editor({ data }: { data?: Blog }) {
         })}
       </Wrap>
       <Divider mt={"1rem"} h={"1px"} bg={"gray"} opacity={0.5} />
-      {content.map((c) => {
-        return (
-          <>
-            <TextEditor key={c.id} value={c.content as string} />
-          </>
-        );
-      })}
+      <Stack gap={"2rem"}>
+        {content.map((c) => {
+          return <ContentEditor key={c.id} content={c} />;
+        })}
+      </Stack>
       <ContentEditorSelector />
     </div>
   );

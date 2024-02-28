@@ -33,7 +33,7 @@ export default function TextEditor({
   function udpateValue(e: { target: { value: string } }) {
     if (e.target.value == "<br>") {
       setPlaceholderShown(() => "block");
-      valueEditor?.(" ");
+      valueEditor?.("");
       return;
     }
     setPlaceholderShown("none");

@@ -31,16 +31,5 @@ export default function Page() {
     getBlogData();
   }, [blogTitle]);
 
-  return (
-    // <div>
-    //   <TextEditor
-    //     className={style.title}
-    //     value={title}
-    //     valueEditor={setTitle}
-    //     placeholder="title"
-    //   />
-    //   <Divider mt={"1rem"} h={"2px"} bg={"GrayText"} />
-    // </div>
-    <BlogEditor data={data} />
-  );
+  return <BlogEditor data={data} />;
 }
