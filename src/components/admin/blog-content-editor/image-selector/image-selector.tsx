@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { FileInput } from "../..";
 import { getDynamicAssetsUrl } from "@/utils";
+import style from "./image-selector.module.scss";
 
 export function ImageSelector({
   value,
@@ -11,8 +12,14 @@ export function ImageSelector({
   onChange: (s: string) => void;
 }) {
   const [url, setUrl] = useState<string>(value);
-  //eslint-disable-next-line
-  const label = <img alt="image uploaded" src={getDynamicAssetsUrl(url)} />;
+  const label = (
+    //eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt="image uploaded"
+      src={getDynamicAssetsUrl(url)}
+      className={style.img}
+    />
+  );
 
   function changeHandler(e: any) {
     const imgUrl = URL.createObjectURL(e.target?.files?.[0]!);
