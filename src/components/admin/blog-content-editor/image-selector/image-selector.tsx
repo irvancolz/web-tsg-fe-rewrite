@@ -18,6 +18,7 @@ export function ImageSelector({
       alt="image uploaded"
       src={getDynamicAssetsUrl(url)}
       className={style.img}
+      title="choose another image"
     />
   );
 

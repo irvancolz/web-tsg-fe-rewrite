@@ -1,6 +1,13 @@
 .img {
+  position: relative;
   display: block;
   margin: auto;
   width: auto;
   max-height: 350px;
+  transition: filter 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
 }
