@@ -1,9 +1,7 @@
 .img {
-  position: relative;
   display: block;
-  margin: auto;
-  width: auto;
-  max-height: 350px;
+  height: 350px;
+  object-fit: contain;
   transition: filter 0.3s ease-in-out;
   cursor: pointer;
 

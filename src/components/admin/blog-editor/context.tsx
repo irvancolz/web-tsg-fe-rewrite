@@ -18,6 +18,7 @@ export type BlogEditorInterface = {
   setTitle: (b: string) => void;
   setAttachment: (b: string) => void;
   updateContent: (c: BlogContent) => void;
+  deleteContent: (c: BlogContent) => void;
   save: () => void;
 };
 
@@ -37,6 +38,11 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
 
   function setTitle(a: string) {
     return setTitles(() => a);
+  }
+
+  function deleteContent(a: BlogContent) {
+    const newData = content.filter((el) => el.id != a.id);
+    setContents(() => newData);
   }
 
   function setContent(a: BlogContent[]) {
@@ -86,6 +92,7 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
         content,
         setContent,
         save,
+        deleteContent,
       }}
     >
       {children}

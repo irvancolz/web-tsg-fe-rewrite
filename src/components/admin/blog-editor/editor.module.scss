@@ -14,3 +14,28 @@
   width: 100%;
   max-width: 50em;
 }
+
+.editor {
+  max-width: 100%;
+  width: 100%;
+  & img {
+    width: fit-content;
+  }
+}
+
+.delete_btn {
+  border-radius: 50%;
+  display: block;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--col-tundora-200);
+  padding: 0.5rem;
+  background-color: transparent;
+  transition: all, 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--col-tundora-50);
+    border-color: var(--col-tundora-300);
+    color: red;
+  }
+}

@@ -43,16 +43,16 @@ export function ContentEditorSelector() {
 
     if (types == "list") {
       content = [];
-
-      const newData: BlogContent = {
-        id,
-        content,
-        type: types,
-      };
-
-      ctx.updateContent(newData);
-      onToggle();
     }
+
+    const newData: BlogContent = {
+      id,
+      content,
+      type: types,
+    };
+
+    ctx.updateContent(newData);
+    onToggle();
   }
 
   function addImage(e: any) {

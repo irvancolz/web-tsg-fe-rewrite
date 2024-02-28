@@ -1,13 +1,20 @@
 "use client";
 import { BlogContent } from "@/types";
-import React from "react";
+import React, { ReactNode } from "react";
 import { HeadingEditor, ImageSelector } from "..";
 import TextEditor from "../text-editor";
 import style from "./editor.module.scss";
 import { useBlogEditor } from "./context";
+import { FaRegTrashAlt } from "react-icons/fa";
+import {
+  Popover,
+  PopoverArrow,
+  PopoverContent,
+  PopoverTrigger,
+} from "@chakra-ui/react";
 
 export default function ContentEditor({ content }: { content: BlogContent }) {
-  const { updateContent } = useBlogEditor();
+  const { updateContent, deleteContent } = useBlogEditor();
 
   function handleEditorChange(content: BlogContent, value: string | string[]) {
     const newContent = {
@@ -17,35 +24,58 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
 
     updateContent(newContent);
   }
+
   function changeHandler(val: string) {
     return handleEditorChange(content, val);
   }
 
-  if (content.type == "img") {
-    return (
+  // update types in the future if add more content types
+  type EditorInterface = {
+    img: ReactNode;
+    heading: ReactNode;
+    text: ReactNode;
+    list: ReactNode;
+  };
+
+  const Editor: EditorInterface = {
+    img: (
       <ImageSelector
         key={content.id}
         value={content.content as string}
         onChange={changeHandler}
       />
-    );
-  }
-
-  if (content.type == "heading") {
-    return (
+    ),
+    heading: (
       <HeadingEditor
         key={content.id}
         value={content.content as string}
         valueEditor={changeHandler}
       />
-    );
-  }
+    ),
+    text: (
+      <TextEditor
+        className={style.text}
+        key={content.id}
+        value={content.content as string}
+        valueEditor={changeHandler}
+      />
+    ),
+    list: <p>need update here tehe XD</p>,
+  };
+
   return (
-    <TextEditor
-      className={style.text}
-      key={content.id}
-      value={content.content as string}
-      valueEditor={changeHandler}
-    />
+    <Popover placement="right-start" trigger="hover">
+      <PopoverTrigger>
+        <div className={style.editor}>{Editor[content.type]}</div>
+      </PopoverTrigger>
+      <PopoverContent w={"fit-content"} rounded={"50%"}>
+        <button
+          onClick={() => deleteContent(content)}
+          className={style.delete_btn}
+        >
+          <FaRegTrashAlt />
+        </button>
+      </PopoverContent>
+    </Popover>
   );
 }
