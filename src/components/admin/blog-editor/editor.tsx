@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useBlogEditor } from "./context";
 import { Blog, BlogContent } from "@/types";
-import TextEditor from "../text-editor";
+import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
 import {
   Divider,
   Stack,
   Tag,
-  TagCloseButton,
   TagLabel,
-  Button,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { ContentEditorSelector, HeadingEditor } from "..";
+import { ContentEditorSelector } from "..";
 import ContentEditor from "./content-editor";
 
 export function Editor({ data }: { data?: Blog }) {

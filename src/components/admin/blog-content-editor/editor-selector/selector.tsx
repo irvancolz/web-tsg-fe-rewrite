@@ -42,7 +42,7 @@ export function ContentEditorSelector() {
     let content: string | string[] = "";
 
     if (types == "list") {
-      content = [];
+      content = [""];
     }
 
     const newData: BlogContent = {

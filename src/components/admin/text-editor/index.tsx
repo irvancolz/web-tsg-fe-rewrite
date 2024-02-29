@@ -4,14 +4,14 @@ import ContentEditable from "react-contenteditable";
 import style from "./text-editor.module.scss";
 import sanitizeHtml from "sanitize-html";
 
-export default function TextEditor({
+export function TextEditor({
   valueEditor,
   value,
   className,
   placeholder = "type something",
 }: {
   valueEditor?: (a: string) => void;
-  value?: string;
+  value: string;
   className?: string;
   placeholder?: string;
 }) {
@@ -42,7 +42,7 @@ export default function TextEditor({
   return (
     <ContentEditable
       className={`${style.editor} ${className}`}
-      html={value || ""}
+      html={value}
       onChange={udpateValue}
       data-placeholder={placeholder}
       style={{

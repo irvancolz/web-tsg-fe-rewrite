@@ -2,16 +2,11 @@
 import { BlogContent } from "@/types";
 import React, { ReactNode } from "react";
 import { HeadingEditor, ImageSelector } from "..";
-import TextEditor from "../text-editor";
+import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
 import { useBlogEditor } from "./context";
 import { FaRegTrashAlt } from "react-icons/fa";
-import {
-  Popover,
-  PopoverArrow,
-  PopoverContent,
-  PopoverTrigger,
-} from "@chakra-ui/react";
+import { Popover, PopoverContent, PopoverTrigger } from "@chakra-ui/react";
 
 export default function ContentEditor({ content }: { content: BlogContent }) {
   const { updateContent, deleteContent } = useBlogEditor();
@@ -25,7 +20,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
     updateContent(newContent);
   }
 
-  function changeHandler(val: string) {
+  function changeHandler(val: string | string[]) {
     return handleEditorChange(content, val);
   }
 
@@ -60,7 +55,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
         valueEditor={changeHandler}
       />
     ),
-    list: <p>need update here tehe XD</p>,
+    list: null,
   };
 
   return (

@@ -60,14 +60,14 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   function updateContent(a: BlogContent) {
     const el = content.find((b) => a.id == b.id);
     if (!el) {
-      setContent([...content, a]);
+      setContents((prev) => [...prev, a]);
       return;
     }
 
     const idx = content.indexOf(el);
     const newContent = content;
     newContent[idx] = a;
-    setContent(newContent);
+    setContents(() => newContent);
   }
 
   function save() {
