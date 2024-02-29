@@ -5,3 +5,10 @@ export function getDynamicAssetsUrl(url: string): string {
     return getSupabasePublicUrl(url);
   return url;
 }
+
+export async function getLocalFile(url: string, filename: string) {
+  const resp = await fetch(url);
+  const blob = await resp.blob();
+  const file = new File([blob], filename);
+  return file;
+}

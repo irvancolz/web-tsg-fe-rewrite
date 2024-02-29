@@ -1,5 +1,7 @@
 "use client";
+import { uploadToSupabase } from "@/api/supabase";
 import { BlogContent } from "@/types";
+import { getLocalFile } from "@/utils";
 import React, {
   ReactNode,
   createContext,
@@ -71,11 +73,20 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   }
 
   function save() {
-    console.log({
-      attachment,
-      title,
-      content,
-      categories,
+    uploadNewFile();
+  }
+
+  function uploadNewFile() {
+    const contentWitheNewFile = content.filter(
+      (item) => item.type == "img" && item.content.startsWith("blob")
+    );
+
+    contentWitheNewFile.forEach(async (item) => {
+      // const uploadRes = await uploadToSupabase(item.content);
+      // URL.revokeObjectURL(item.content);
+      // const newContent = { ...item };
+      // newContent.content = uploadRes.path;
+      // updateContent(newContent);
     });
   }
 

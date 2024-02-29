@@ -4,6 +4,7 @@ import { Blog, BlogContent } from "@/types";
 import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
 import {
+  Button,
   Divider,
   Stack,
   Tag,
@@ -45,6 +46,7 @@ export function Editor({ data }: { data?: Blog }) {
         value={title}
         valueEditor={setTitle}
       />
+      <Button onClick={save}>Save</Button>
       <Wrap>
         {categories.map((category, i) => {
           return (
