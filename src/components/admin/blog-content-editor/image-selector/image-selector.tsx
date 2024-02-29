@@ -1,15 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import { FileInput } from "../..";
-import { getDynamicAssetsUrl } from "@/utils";
+import { getDynamicAssetsUrl, recordFileData } from "@/utils";
 import style from "./image-selector.module.scss";
+import { BlogImageProps } from "@/types";
 
 export function ImageSelector({
   value,
   onChange,
 }: {
   value: string;
-  onChange: (s: string) => void;
+  onChange: (a: any) => void;
 }) {
   const [url, setUrl] = useState<string>(value);
   const label = (
@@ -23,9 +24,10 @@ export function ImageSelector({
   );
 
   function changeHandler(e: any) {
-    const imgUrl = URL.createObjectURL(e.target?.files?.[0]!);
-    onChange(imgUrl);
-    setUrl(() => imgUrl);
+    const file = e.target?.files?.[0]! as File;
+    const data = recordFileData(file);
+    onChange(data);
+    setUrl(() => data.url!);
   }
 
   return (

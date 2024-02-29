@@ -24,9 +24,17 @@ export const BlogContentTypeFlag: BlogContentType[] = [
 
 export type BlogContentType = "text" | "heading" | "img";
 
-export type BlogContent = {
+export type BlogImageProps = {
+  name?: string;
+  size?: number;
+  extensions?: string;
+  url?: string;
+};
+
+export type BlogContent<T = BlogImageProps> = {
   id: string;
   type: BlogContentType;
   // update to more dynamic types in the future
   content: string;
+  props?: T;
 };

@@ -82,6 +82,7 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
     );
 
     contentWitheNewFile.forEach(async (item) => {
+      console.log(item);
       // const uploadRes = await uploadToSupabase(item.content);
       // URL.revokeObjectURL(item.content);
       // const newContent = { ...item };

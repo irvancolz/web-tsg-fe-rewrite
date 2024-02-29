@@ -1,7 +1,12 @@
 "use client";
 import React, { ReactNode, useRef } from "react";
 import style from "./selector.module.scss";
-import { BlogContent, BlogContentType, BlogContentTypeFlag } from "@/types";
+import {
+  BlogContent,
+  BlogContentType,
+  BlogContentTypeFlag,
+  BlogImageProps,
+} from "@/types";
 import {
   Popover,
   PopoverArrow,
@@ -17,6 +22,7 @@ import { RiText } from "react-icons/ri";
 import { RiHeading } from "react-icons/ri";
 import { FileInput } from "../../input";
 import { useBlogEditor } from "../../blog-editor/context";
+import { recordFileData } from "@/utils";
 
 const logo: { [key: string]: ReactNode } = {
   text: <RiText />,
@@ -50,12 +56,14 @@ export function ContentEditorSelector() {
   }
 
   function addImage(e: any) {
-    const imgUrl = URL.createObjectURL(e.target?.files?.[0]!);
-    if (!imgUrl) return;
+    const file = e.target?.files?.[0]! as File;
+    const { url, ...restFileDetail } = recordFileData(file);
+    if (!url) return;
     const data: BlogContent = {
       id: `${Date.now()}`,
       type: "img",
-      content: imgUrl,
+      content: url,
+      props: restFileDetail,
     };
 
     ctx.updateContent(data);

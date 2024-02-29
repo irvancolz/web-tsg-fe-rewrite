@@ -1,5 +1,5 @@
 "use client";
-import { BlogContent } from "@/types";
+import { BlogContent, BlogImageProps } from "@/types";
 import React, { ReactNode } from "react";
 import { HeadingEditor, ImageSelector } from "..";
 import { TextEditor } from "../text-editor";
@@ -11,17 +11,27 @@ import { Popover, PopoverContent, PopoverTrigger } from "@chakra-ui/react";
 export default function ContentEditor({ content }: { content: BlogContent }) {
   const { updateContent, deleteContent } = useBlogEditor();
 
-  function handleEditorChange(content: BlogContent, value: string | string[]) {
+  function handleEditorChange(
+    content: BlogContent,
+    value: string,
+    props?: any
+  ) {
     const newContent = {
       ...content,
       content: value,
+      props,
     };
 
     updateContent(newContent);
   }
 
-  function changeHandler(val: string | string[]) {
+  function changeHandler(val: string) {
     return handleEditorChange(content, val);
+  }
+
+  function changeImgHandler({ url, ...rest }: BlogImageProps) {
+    const value = url ?? "";
+    handleEditorChange(content, value, rest);
   }
 
   // update types in the future if add more content types
@@ -37,7 +47,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
       <ImageSelector
         key={content.id}
         value={content.content as string}
-        onChange={changeHandler}
+        onChange={changeImgHandler}
       />
     ),
     heading: (
