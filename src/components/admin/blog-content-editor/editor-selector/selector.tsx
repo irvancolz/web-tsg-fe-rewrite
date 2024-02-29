@@ -15,7 +15,6 @@ import { HiOutlinePlus } from "react-icons/hi2";
 import { CiImageOn } from "react-icons/ci";
 import { RiText } from "react-icons/ri";
 import { RiHeading } from "react-icons/ri";
-import { PiListBold } from "react-icons/pi";
 import { FileInput } from "../../input";
 import { useBlogEditor } from "../../blog-editor/context";
 
@@ -23,7 +22,6 @@ const logo: { [key: string]: ReactNode } = {
   text: <RiText />,
   heading: <RiHeading />,
   img: <CiImageOn />,
-  list: <PiListBold />,
 };
 
 export function ContentEditorSelector() {
@@ -40,10 +38,6 @@ export function ContentEditorSelector() {
   function handleSelect(types: BlogContentType) {
     const id = `${Date.now()}`;
     let content: string | string[] = "";
-
-    if (types == "list") {
-      content = [""];
-    }
 
     const newData: BlogContent = {
       id,
