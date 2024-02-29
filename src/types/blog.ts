@@ -28,5 +28,5 @@ export type BlogContent = {
   id: string;
   type: BlogContentType;
   // update to more dynamic types in the future
-  content: string | string[];
+  content: string;
 };
