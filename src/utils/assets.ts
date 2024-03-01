@@ -1,5 +1,6 @@
 import { getSupabasePublicUrl } from "@/api/supabase";
 import { BlogImageProps } from "@/types";
+import { ALLOWED_EXT_TO_UPLOAD } from "@/types/storage";
 
 export function getDynamicAssetsUrl(url: string): string {
   if (!url.startsWith("http") && !url.startsWith("blob"))
@@ -21,4 +22,8 @@ export function recordFileData(file: File): BlogImageProps {
     size: file.size,
     url: URL.createObjectURL(file),
   };
+}
+
+export function isExtAllowed(ext: string) {
+  return ALLOWED_EXT_TO_UPLOAD.some((el) => el == ext);
 }

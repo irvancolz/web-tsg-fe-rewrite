@@ -1,14 +1,8 @@
 "use client";
 import { uploadToSupabase } from "@/api/supabase";
 import { BlogContent } from "@/types";
-import { getLocalFile } from "@/utils";
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { getLocalFile, isExtAllowed } from "@/utils";
+import React, { ReactNode, createContext, useContext, useState } from "react";
 
 export type BlogEditorInterface = {
   title: string;
@@ -72,23 +66,34 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
     setContents(() => newContent);
   }
 
-  function save() {
-    uploadNewFile();
+  async function save() {
+    const updatedFilepath = await uploadNewFile();
+    updatedFilepath.forEach((item) => {
+      updateContent(item);
+    });
   }
 
-  function uploadNewFile() {
+  async function uploadNewFile() {
     const contentWitheNewFile = content.filter(
       (item) => item.type == "img" && item.content.startsWith("blob")
     );
 
-    contentWitheNewFile.forEach(async (item) => {
-      console.log(item);
-      // const uploadRes = await uploadToSupabase(item.content);
-      // URL.revokeObjectURL(item.content);
-      // const newContent = { ...item };
-      // newContent.content = uploadRes.path;
-      // updateContent(newContent);
-    });
+    let contentWithNewFilePath: BlogContent[] = [];
+
+    for (const item of contentWitheNewFile) {
+      if (!isExtAllowed(item.props?.extensions!)) continue;
+      const file = await getLocalFile(item.content, item.props?.name!);
+      const uploadRes = await uploadToSupabase(file, item.props?.name!);
+      URL.revokeObjectURL(item.content);
+      const newContent: BlogContent = {
+        content: uploadRes.path,
+        id: item.id,
+        type: item.type,
+        props: item.props,
+      };
+      contentWithNewFilePath.push(newContent);
+    }
+    return contentWithNewFilePath;
   }
 
   return (

@@ -11,11 +11,14 @@ export function getSupabasePublicUrl(path: string): string {
   return publicUrl;
 }
 
-export async function uploadToSupabase(url: string): Promise<UploadFileResp> {
-  const fileName = url.split("/").splice(-1).join("");
+export async function uploadToSupabase(file: File, name: string) {
+  const splittedName = name.split(".");
+  splittedName.splice(splittedName.length - 1, 1);
+  const fileExt = name.split(".").splice(-1).join("");
+  const newFilename = splittedName.join("") + Date.now() + "." + fileExt;
   const { data, error } = await supabase.storage
     .from(STORAGE)
-    .upload(fileName, url);
+    .upload(newFilename, file);
   if (error) console.log(error);
   return data as UploadFileResp;
 }
