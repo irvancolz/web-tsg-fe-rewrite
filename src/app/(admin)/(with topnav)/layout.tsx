@@ -1,8 +1,9 @@
 "use client";
 import { isAuthorized } from "@/api/supabase";
-import { Sidebar, Topnav } from "@/components";
+import { Sidebar } from "@/components";
 import { Flex } from "@chakra-ui/react";
 import { redirect, useRouter } from "next/navigation";
+import style from "./layout.module.scss";
 
 import React, { ReactNode, useEffect, useState } from "react";
 
@@ -26,14 +27,11 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Topnav variant="static" />
       <main>
-        <div id="main_container">
-          <Flex gap={"2rem"}>
-            <Sidebar />
-            {children}
-          </Flex>
-        </div>
+        <Flex gap={"2rem"}>
+          <Sidebar />
+          <div className={style.container}>{children}</div>
+        </Flex>
       </main>
     </>
   );

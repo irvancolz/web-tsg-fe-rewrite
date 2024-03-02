@@ -1,10 +1,17 @@
 .sidebar {
   background-color: var(--col-blue-600);
   padding: 1rem;
-  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  &_logo {
+    aspect-ratio: 487/120;
+    height: 3rem;
+  }
 
   &_link {
     color: var(--col-white);
