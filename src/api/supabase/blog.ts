@@ -51,3 +51,10 @@ export async function getAllBlogWithCategories(category: string) {
     return Date.parse(b.created_at) - Date.parse(a.created_at);
   });
 }
+
+export async function uploadBlog(
+  blog: Omit<Blog, "tsg_blog_categories" | "created_at" | "updated_at">
+) {
+  const { error } = await supabase.from(BLOG_TABLE).insert(blog);
+  if (error) console.log(error);
+}
