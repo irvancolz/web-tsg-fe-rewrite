@@ -18,9 +18,8 @@ export async function getBlog(name: string) {
   const { data, error } = await supabase
     .from(BLOG_TABLE)
     .select(`*, ${BLOG_CATEGORIES_TABLE}(${CATEGORIES_TABLE}(*))`)
-    .eq("title", name)
+    .ilike("title", `%${name}%`)
     .single();
-
   if (error) console.log(error.message);
   return data as Blog;
 }

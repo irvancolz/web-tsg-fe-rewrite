@@ -3,9 +3,9 @@ export function normalizeString(encodedString: string) {
     const decodedString = decodeURIComponent(encodedString);
     const normalizedString = decodedString.replace(/\s+/g, " ");
 
-    return normalizedString;
+    return normalizedString.toLowerCase();
   } catch (error) {
     console.error("Error decoding URI component:", error);
-    return encodedString;
+    return encodedString.toLowerCase();
   }
 }

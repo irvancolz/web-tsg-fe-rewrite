@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useBlogEditor } from "./context";
-import { Blog, BlogContent } from "@/types";
+import { Blog, BlogImageProps } from "@/types";
 import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
-import {
-  Button,
-  Divider,
-  Stack,
-  Tag,
-  TagLabel,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
-import { ContentEditorSelector } from "..";
+import { Divider, Stack } from "@chakra-ui/react";
+import { ContentEditorSelector, ImageSelector } from "..";
 import ContentEditor from "./content-editor";
 import { BlogCategoriesEditor } from "../blog-content-editor/blog-categories-editor/blog-categories-editor";
 
 export function Editor({ data }: { data?: Blog }) {
   const {
-    categories,
+    attachment,
     content,
     save,
     setAttachment,
@@ -27,7 +19,6 @@ export function Editor({ data }: { data?: Blog }) {
     setTitle,
     title,
   } = useBlogEditor();
-  const [newContent, setNewContent] = useState<BlogContent>({} as BlogContent);
 
   useEffect(() => {
     if (data) {
@@ -36,8 +27,13 @@ export function Editor({ data }: { data?: Blog }) {
       setCategories(data.tsg_blog_categories.map((e) => e.tsg_categories.id));
       setContent(data.content);
     }
+
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
+
+  function changeImgHandler(e: BlogImageProps) {
+    return setAttachment(e.url ?? "");
+  }
 
   return (
     <div className={style.container}>
@@ -47,9 +43,9 @@ export function Editor({ data }: { data?: Blog }) {
         value={title}
         valueEditor={setTitle}
       />
-      <Button onClick={save}>Save</Button>
       <BlogCategoriesEditor />
       <Divider mt={"1rem"} h={"1px"} bg={"gray"} opacity={0.5} />
+      <ImageSelector value={attachment} onChange={changeImgHandler} />
       <Stack gap={"2rem"}>
         {content.map((c) => {
           return <ContentEditor key={c.id} content={c} />;

@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FileInput } from "../..";
 import { getDynamicAssetsUrl, recordFileData } from "@/utils";
 import style from "./image-selector.module.scss";
-import { BlogImageProps } from "@/types";
 
 export function ImageSelector({
   value,
@@ -22,6 +21,10 @@ export function ImageSelector({
       title="choose another image"
     />
   );
+
+  useEffect(() => {
+    setUrl(() => value);
+  }, [value]);
 
   function changeHandler(e: any) {
     const file = e.target?.files?.[0]! as File;

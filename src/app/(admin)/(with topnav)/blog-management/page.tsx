@@ -1,5 +1,5 @@
 "use client";
-import { getAllBlog } from "@/api";
+import { getAllBlog } from "@/api/supabase";
 import { Button, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BiPlus } from "react-icons/bi";
