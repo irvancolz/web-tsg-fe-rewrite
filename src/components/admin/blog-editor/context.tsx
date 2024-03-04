@@ -1,14 +1,16 @@
 "use client";
-import { uploadToSupabase } from "@/api/supabase";
-import { BlogContent } from "@/types";
-import { getLocalFile, isExtAllowed } from "@/utils";
+import { Blog, BlogContent } from "@/types";
 import React, { ReactNode, createContext, useContext, useState } from "react";
+import { updateBlogCategories, uploadNewFile } from "./utils";
+import { getCategoriesByBlog, updateBlog, uploadBlog } from "@/api/supabase";
 
 export type BlogEditorInterface = {
+  id?: number;
   title: string;
   content: BlogContent[];
   attachment: string;
   categories: number[];
+  setId: (a: number) => void;
   setCategories: (a: number[]) => void;
   setContent: (b: BlogContent[]) => void;
   setTitle: (b: string) => void;
@@ -29,10 +31,12 @@ export function useBlogEditor() {
 }
 
 export function BlogEditorContext({ children }: { children: ReactNode }) {
+  const [id, setId] = useState<number | undefined>();
   const [title, setTitles] = useState<string>("");
   const [content, setContents] = useState<BlogContent[]>([]);
   const [attachment, setAttachments] = useState<string>("");
   const [categories, setCategoriess] = useState<number[]>([]);
+  const [baseCategories, setBaseCategories] = useState<number[]>([]);
 
   function setTitle(a: string) {
     return setTitles(() => a);
@@ -79,38 +83,40 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   }
 
   async function save() {
-    const updatedFilepath = await uploadNewFile();
+    const data: Omit<
+      Blog,
+      "tsg_blog_categories" | "created_at" | "updated_at" | "id"
+    > = {
+      content,
+      title,
+      attachment,
+    };
+    const updatedFilepath = await uploadNewFile(content);
     updatedFilepath.forEach((item) => {
       updateContent(item);
     });
-  }
 
-  async function uploadNewFile() {
-    const contentWitheNewFile = content.filter(
-      (item) => item.type == "img" && item.content.startsWith("blob")
-    );
-
-    let contentWithNewFilePath: BlogContent[] = [];
-
-    for (const item of contentWitheNewFile) {
-      if (!isExtAllowed(item.props?.extensions!)) continue;
-      const file = await getLocalFile(item.content, item.props?.name!);
-      const uploadRes = await uploadToSupabase(file, item.props?.name!);
-      URL.revokeObjectURL(item.content);
-      const newContent: BlogContent = {
-        content: uploadRes.path,
-        id: item.id,
-        type: item.type,
-        props: item.props,
-      };
-      contentWithNewFilePath.push(newContent);
+    if (!id) {
+      const newBlog = await uploadBlog(data);
+      setId(() => newBlog.id);
+    } else {
+      const updatedBlog = await updateBlog(data, id);
+      const categories = await getCategoriesByBlog(id);
+      setBaseCategories(() => (categories ?? []).map((item) => item.id));
     }
-    return contentWithNewFilePath;
+
+    await updateBlogCategories({
+      blog_id: id!,
+      newCategory: categories,
+      baseCategory: baseCategories,
+    });
   }
 
   return (
     <BlogEditor.Provider
       value={{
+        id,
+        setId,
         title,
         setTitle,
         categories,
