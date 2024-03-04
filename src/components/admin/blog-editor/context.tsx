@@ -8,13 +8,15 @@ export type BlogEditorInterface = {
   title: string;
   content: BlogContent[];
   attachment: string;
-  categories: string[];
-  setCategories: (a: string[]) => void;
+  categories: number[];
+  setCategories: (a: number[]) => void;
   setContent: (b: BlogContent[]) => void;
   setTitle: (b: string) => void;
   setAttachment: (b: string) => void;
   updateContent: (c: BlogContent) => void;
   deleteContent: (c: BlogContent) => void;
+  addCategory: (a: number) => void;
+  deleteCategory: (a: number) => void;
   save: () => void;
 };
 
@@ -30,7 +32,7 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   const [title, setTitles] = useState<string>("");
   const [content, setContents] = useState<BlogContent[]>([]);
   const [attachment, setAttachments] = useState<string>("");
-  const [categories, setCategoriess] = useState<string[]>([]);
+  const [categories, setCategoriess] = useState<number[]>([]);
 
   function setTitle(a: string) {
     return setTitles(() => a);
@@ -49,8 +51,18 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
     return setAttachments(() => a);
   }
 
-  function setCategories(a: string[]) {
+  function setCategories(a: number[]) {
     return setCategoriess(() => a);
+  }
+
+  function addCategory(a: number) {
+    const newData = new Set([...categories, a]);
+    return setCategories([...Array.from(newData)]);
+  }
+
+  function deleteCategory(a: number) {
+    const filtered = categories.filter((i) => i != a);
+    return setCategories(filtered);
   }
 
   function updateContent(a: BlogContent) {
@@ -110,6 +122,8 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
         setContent,
         save,
         deleteContent,
+        addCategory,
+        deleteCategory,
       }}
     >
       {children}

@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { ContentEditorSelector } from "..";
 import ContentEditor from "./content-editor";
+import { BlogCategoriesEditor } from "../blog-content-editor/blog-categories-editor/blog-categories-editor";
 
 export function Editor({ data }: { data?: Blog }) {
   const {
@@ -32,7 +33,7 @@ export function Editor({ data }: { data?: Blog }) {
     if (data) {
       setAttachment(data.attachment);
       setTitle(data.title);
-      setCategories(data.tsg_blog_categories.map((e) => e.tsg_categories.name));
+      setCategories(data.tsg_blog_categories.map((e) => e.tsg_categories.id));
       setContent(data.content);
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,17 +48,7 @@ export function Editor({ data }: { data?: Blog }) {
         valueEditor={setTitle}
       />
       <Button onClick={save}>Save</Button>
-      <Wrap>
-        {categories.map((category, i) => {
-          return (
-            <WrapItem key={i}>
-              <Tag>
-                <TagLabel>{category}</TagLabel>
-              </Tag>
-            </WrapItem>
-          );
-        })}
-      </Wrap>
+      <BlogCategoriesEditor />
       <Divider mt={"1rem"} h={"1px"} bg={"gray"} opacity={0.5} />
       <Stack gap={"2rem"}>
         {content.map((c) => {
