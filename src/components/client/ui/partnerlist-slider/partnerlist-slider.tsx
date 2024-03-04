@@ -21,24 +21,26 @@ export function PartnerlistSlider({
       <div className={styles.partners}>
         {images.map((org, i) => {
           return (
-            <Images
-              key={i}
-              className={styles.partners_logo}
-              style={{ "--ratio": org.ratio } as CSSProperties}
-              alt=""
-              src={getStaticAssetsPath("/images/webp", org.img)}
-            />
+            <span key={i} className={styles.partners_logo_wrapper}>
+              <Images
+                className={styles.partners_logo}
+                style={{ "--ratio": org.ratio } as CSSProperties}
+                alt=""
+                src={getStaticAssetsPath("/images/webp", org.img)}
+              />
+            </span>
           );
         })}
         {images.map((org, i) => {
           return (
-            <Images
-              key={i}
-              className={styles.partners_logo}
-              style={{ "--ratio": org.ratio } as CSSProperties}
-              alt=""
-              src={getStaticAssetsPath("/images/webp", org.img)}
-            />
+            <span key={i} className={styles.partners_logo_wrapper}>
+              <Images
+                className={styles.partners_logo}
+                style={{ "--ratio": org.ratio } as CSSProperties}
+                alt=""
+                src={getStaticAssetsPath("/images/webp", org.img)}
+              />
+            </span>
           );
         })}
       </div>
