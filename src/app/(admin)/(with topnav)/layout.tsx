@@ -1,11 +1,12 @@
 "use client";
 import { isAuthorized } from "@/api/supabase";
-import { Sidebar } from "@/components";
+import { Pagename, Sidebar } from "@/components";
 import { Flex } from "@chakra-ui/react";
 import { redirect, useRouter } from "next/navigation";
 import style from "./layout.module.scss";
 
 import React, { ReactNode, useEffect, useState } from "react";
+import { PageNameContextProvider } from "@/context";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [authorized, setAuthorized] = useState<boolean | null>(null);
@@ -30,7 +31,13 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main>
         <Flex gap={"2rem"}>
           <Sidebar />
-          <div className={style.container}>{children}</div>
+
+          <PageNameContextProvider>
+            <div className={style.container}>
+              <Pagename />
+              {children}
+            </div>
+          </PageNameContextProvider>
         </Flex>
       </main>
     </>
