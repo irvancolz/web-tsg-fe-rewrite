@@ -10,12 +10,12 @@ import {
   Stack,
   useBoolean,
 } from "@chakra-ui/react";
-import { redirect, useRouter } from "next/navigation";
-import React, { FormEvent, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { FormEvent, useState } from "react";
 
 export function LoginForm() {
-  const [username, setUsername] = useState<string>("tsgblogadmin@tsgitdev.com");
-  const [password, setPassword] = useState<string>("tsgblogadmin");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [invalid, setInvalid] = useState<string>("");
   const [loading, setLoading] = useBoolean();
   const router = useRouter();

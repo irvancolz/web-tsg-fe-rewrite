@@ -3,7 +3,6 @@ import style from "./page.module.scss";
 import { Images, LoginForm } from "@/components";
 import { getStaticAssetsPath } from "@/consts";
 import { Center } from "@chakra-ui/react";
-import { login } from "@/api/supabase";
 
 export default function Page() {
   return (
