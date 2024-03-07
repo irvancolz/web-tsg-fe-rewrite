@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 // change the last folder name if the supabase host is changed
 const STORAGE = "tsg-blog-assets";
-const HOSTNAME = "wiilydclowagpctqbiqe.supabase.co";
+const HOSTNAME = process.env.NEXT_PUBLIC_SUPABASE_IMG_DOMAIN;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
