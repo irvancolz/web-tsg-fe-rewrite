@@ -38,6 +38,11 @@ export async function updateBlogCategories({
   baseCategory?: number[];
   blog_id: number;
 }) {
+  if (!blog_id) {
+    console.error("failed to update blog categories : empty blog target");
+    return;
+  }
+
   if (baseCategory.length == 0) {
     return await addBlogCategory(newCategory, blog_id);
   }

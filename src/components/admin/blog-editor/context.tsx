@@ -36,7 +36,7 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   const [content, setContents] = useState<BlogContent[]>([]);
   const [attachment, setAttachments] = useState<string>("");
   const [categories, setCategoriess] = useState<number[]>([]);
-  const [baseCategories, setBaseCategories] = useState<number[]>([]);
+  // const [baseCategories, setBaseCategories] = useState<number[]>([]);
 
   function setTitle(a: string) {
     return setTitles(() => a);
@@ -82,6 +82,31 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
     setContents(() => newContent);
   }
 
+  async function getBlogIdAnBaseCategories({
+    data,
+    id,
+  }: {
+    data: Omit<
+      Blog,
+      "tsg_blog_categories" | "created_at" | "updated_at" | "id"
+    >;
+    id?: number;
+  }) {
+    if (!id) {
+      const newBlog = await uploadBlog(data);
+      return {
+        id: newBlog?.id!,
+        baseCategories: [],
+      };
+    }
+    const categories = await getCategoriesByBlog(id);
+
+    return {
+      id,
+      baseCategories: (categories ?? []).map((item) => item.id),
+    };
+  }
+
   async function save() {
     const data: Omit<
       Blog,
@@ -96,17 +121,17 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
       updateContent(item);
     });
 
-    if (!id) {
-      const newBlog = await uploadBlog(data);
-      setId(() => newBlog.id);
-    } else {
-      const updatedBlog = await updateBlog(data, id);
-      const categories = await getCategoriesByBlog(id);
-      setBaseCategories(() => (categories ?? []).map((item) => item.id));
+    if (id) {
+      await updateBlog(data, id);
     }
 
+    const { baseCategories, id: blogId } = await getBlogIdAnBaseCategories({
+      data,
+      id,
+    });
+
     await updateBlogCategories({
-      blog_id: id!,
+      blog_id: blogId!,
       newCategory: categories,
       baseCategory: baseCategories,
     });

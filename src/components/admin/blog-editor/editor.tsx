@@ -3,7 +3,7 @@ import { useBlogEditor } from "./context";
 import { Blog, BlogImageProps } from "@/types";
 import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
-import { Divider, Stack } from "@chakra-ui/react";
+import { Button, Divider, Stack } from "@chakra-ui/react";
 import { ContentEditorSelector, ImageSelector } from "..";
 import ContentEditor from "./content-editor";
 import { BlogCategoriesEditor } from "../blog-content-editor/blog-categories-editor/blog-categories-editor";
@@ -37,6 +37,11 @@ export function Editor({ data }: { data?: Blog }) {
 
   return (
     <div className={style.container}>
+      <div>
+        <Button onClick={save} id="save-blog">
+          Save
+        </Button>
+      </div>
       <TextEditor
         className={style.title}
         placeholder="title"
