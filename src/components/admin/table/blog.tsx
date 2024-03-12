@@ -18,7 +18,7 @@ import {
   useDisclosure,
   Flex,
 } from "@chakra-ui/react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdOutlineModeEdit } from "react-icons/md";
@@ -38,9 +38,15 @@ export function BlogTable({ blogs }: { blogs: Blog[] }) {
         <Table size={"sm"} variant="simple">
           <Thead>
             <Tr>
-              <Td>No</Td>
-              <Td>Title</Td>
-              <Td>Actions</Td>
+              <Td fontWeight={700} fontSize={"1.15rem"}>
+                No
+              </Td>
+              <Td fontWeight={700} fontSize={"1.15rem"}>
+                Title
+              </Td>
+              <Td fontWeight={700} fontSize={"1.15rem"}>
+                Actions
+              </Td>
             </Tr>
           </Thead>
           <Tbody>

@@ -10,7 +10,7 @@ export async function getAllBlog() {
     .from(BLOG_TABLE)
     .select(`*, ${BLOG_CATEGORIES_TABLE}(${CATEGORIES_TABLE}(*))`)
     .order("created_at", { ascending: false });
-  if (error) console.log(error.message);
+  if (error) throw new Error(error.message);
   return data as unknown as Blog[];
 }
 
@@ -20,13 +20,13 @@ export async function getBlog(name: string) {
     .select(`*, ${BLOG_CATEGORIES_TABLE}(${CATEGORIES_TABLE}(*))`)
     .ilike("title", `%${name}%`)
     .single();
-  if (error) console.log(error.message);
+  if (error) throw new Error(error.message);
   return data as Blog;
 }
 
 export async function getAllCategories() {
   const { data, error } = await supabase.from(CATEGORIES_TABLE).select(`*`);
-  if (error) console.log(error.message);
+  if (error) throw new Error(error.message);
 
   return data as Categories[];
 }
@@ -39,7 +39,7 @@ export async function getAllBlogWithCategories(category: string) {
     )
     .eq("name", category)
     .single();
-  if (error) console.log(error.message);
+  if (error) throw new Error(error.message);
   const result: Blog[] = [];
 
   data?.tsg_blog_categories?.forEach((i) => {

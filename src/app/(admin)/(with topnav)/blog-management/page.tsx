@@ -1,6 +1,6 @@
 "use client";
 import { getAllBlog } from "@/api/supabase";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Skeleton, Stack, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import { BlogTable } from "@/components";
@@ -10,7 +10,9 @@ import { Blog } from "@/types";
 
 export default function Page() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const { setPageName } = usePageName();
+  const toast = useToast();
 
   useEffect(() => {
     setPageName({
@@ -19,11 +21,25 @@ export default function Page() {
     });
 
     async function getBlog() {
+      setLoading(() => true);
       const data = await getAllBlog();
       setBlogs(() => data);
+      setLoading(() => false);
     }
 
-    getBlog();
+    toast.promise(getBlog(), {
+      error: (e) => {
+        return { title: "error occured", description: e.message };
+      },
+      loading: {
+        title: "loading",
+        description: "please wait a moment",
+      },
+      success: {
+        title: "success",
+        description: "blogs succesfully retrieved",
+      },
+    });
 
     //eslint-disable-next-line
   }, []);
@@ -41,7 +57,17 @@ export default function Page() {
           Add new
         </Button>
       </Flex>
-      <BlogTable blogs={blogs} />
+      {loading ? (
+        <Stack>
+          <Skeleton fadeDuration={0.2} />
+          <Skeleton fadeDuration={0.2} />
+          <Skeleton fadeDuration={0.2} />
+          <Skeleton fadeDuration={0.2} />
+          <Skeleton fadeDuration={0.2} />
+        </Stack>
+      ) : (
+        <BlogTable blogs={blogs} />
+      )}
     </div>
   );
 }

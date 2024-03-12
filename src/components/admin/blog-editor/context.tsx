@@ -36,7 +36,6 @@ export function BlogEditorContext({ children }: { children: ReactNode }) {
   const [content, setContents] = useState<BlogContent[]>([]);
   const [attachment, setAttachments] = useState<string>("");
   const [categories, setCategoriess] = useState<number[]>([]);
-  // const [baseCategories, setBaseCategories] = useState<number[]>([]);
 
   function setTitle(a: string) {
     return setTitles(() => a);
