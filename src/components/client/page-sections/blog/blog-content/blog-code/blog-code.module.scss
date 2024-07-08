@@ -1,0 +1,21 @@
+.container {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  position: relative;
+  background-color: var(--col-tundora-800);
+
+  button {
+    position: absolute;
+    appearance: none;
+    border: 1px solid var(--col-tundora-200);
+    background-color: var(--col-tundora-600);
+    padding: 0.25rem 0.5rem;
+    top: 1rem;
+    right: 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    color: white;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+}
