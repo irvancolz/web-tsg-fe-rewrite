@@ -20,9 +20,11 @@ export const BlogContentTypeFlag: BlogContentType[] = [
   "text",
   "heading",
   "img",
+  "code",
+  "list",
 ];
 
-export type BlogContentType = "text" | "heading" | "img";
+export type BlogContentType = "text" | "heading" | "img" | "code" | "list";
 
 export type BlogImageProps = {
   name?: string;
