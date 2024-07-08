@@ -55,6 +55,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
         key={content.id}
         value={content.content as string}
         valueEditor={changeHandler}
+        placeholder="type something"
       />
     ),
     text: (
@@ -63,6 +64,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
         key={content.id}
         value={content.content as string}
         valueEditor={changeHandler}
+        placeholder="type something"
       />
     ),
     list: null,

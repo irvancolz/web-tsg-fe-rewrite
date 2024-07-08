@@ -9,3 +9,9 @@
     filter: brightness(0.7);
   }
 }
+
+.container {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+}

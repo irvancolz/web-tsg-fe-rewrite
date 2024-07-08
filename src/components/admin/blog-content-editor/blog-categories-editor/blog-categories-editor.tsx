@@ -4,7 +4,6 @@ import { useBlogEditor } from "../../blog-editor/context";
 import { Categories } from "@/types";
 import { getAllCategories } from "@/api/supabase";
 import {
-  Flex,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -38,6 +37,9 @@ export function BlogCategoriesEditor() {
 
   return (
     <Wrap gap={".5rem"}>
+      {categories.length < 1 && (
+        <p data-cypress="blog-categories-placeholder">select blog categories</p>
+      )}
       {allCategories
         .filter((item) => categories.some((e) => e == item.id))
         .map((category) => {

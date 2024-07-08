@@ -9,7 +9,7 @@ export const FileInput = forwardRef<
   const defaultRef = useRef<HTMLInputElement>(null);
   const activeRef = ref ? ref : defaultRef;
   return (
-    <label>
+    <label className={style.container}>
       <input ref={activeRef} className={style.input} {...rest} type="file" />
       {label}
     </label>

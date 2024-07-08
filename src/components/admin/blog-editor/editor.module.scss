@@ -17,9 +17,11 @@
 
 .editor {
   max-width: 100%;
-  width: 100%;
+  width: fit-content;
   & img {
     width: fit-content;
+    max-width: 100%;
+    object-fit: cover;
   }
 }
 

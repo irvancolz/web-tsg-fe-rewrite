@@ -3,8 +3,8 @@ import { useBlogEditor } from "./context";
 import { Blog, BlogImageProps } from "@/types";
 import { TextEditor } from "../text-editor";
 import style from "./editor.module.scss";
-import { Button, Divider, Stack, Toast, useToast } from "@chakra-ui/react";
-import { ContentEditorSelector, ImageSelector } from "..";
+import { Button, Divider, Stack } from "@chakra-ui/react";
+import { ContentEditorSelector, FileInput } from "..";
 import ContentEditor from "./content-editor";
 import { BlogCategoriesEditor } from "../blog-content-editor/blog-categories-editor/blog-categories-editor";
 
@@ -19,8 +19,6 @@ export function Editor({ data }: { data?: Blog }) {
     setTitle,
     title,
   } = useBlogEditor();
-
-  const toast = useToast();
 
   useEffect(() => {
     if (data) {
@@ -50,7 +48,9 @@ export function Editor({ data }: { data?: Blog }) {
       />
       <BlogCategoriesEditor />
       <Divider mt={"1rem"} h={"1px"} bg={"gray"} opacity={0.5} />
-      <Stack gap={"2rem"}>
+      {/* atachment */}
+      <FileInput label="hello" />
+      <Stack gap={"2rem"} align={"center"}>
         {content.map((c) => {
           return <ContentEditor key={c.id} content={c} />;
         })}

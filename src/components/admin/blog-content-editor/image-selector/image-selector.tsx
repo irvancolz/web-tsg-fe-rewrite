@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FileInput } from "../..";
 import { getDynamicAssetsUrl, recordFileData } from "@/utils";
-import style from "./image-selector.module.scss";
+import styles from "./image-selector.module.scss";
 
 export function ImageSelector({
   value,
@@ -17,7 +17,7 @@ export function ImageSelector({
     <img
       alt="image uploaded"
       src={getDynamicAssetsUrl(url)}
-      className={style.img}
+      className={styles.img}
       title="choose another image"
     />
   );
@@ -34,7 +34,7 @@ export function ImageSelector({
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <FileInput label={label} onChange={changeHandler} />
     </div>
   );
