@@ -40,6 +40,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
     heading: ReactNode;
     text: ReactNode;
     list: ReactNode;
+    code: ReactNode;
   };
 
   const Editor: EditorInterface = {
@@ -68,6 +69,7 @@ export default function ContentEditor({ content }: { content: BlogContent }) {
       />
     ),
     list: null,
+    code: null,
   };
 
   return (
